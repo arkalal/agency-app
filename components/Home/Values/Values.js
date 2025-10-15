@@ -46,7 +46,8 @@ const items = [
 
 export default function Values(){
   return (
-    <section className="container">
+    <section className={styles.wrap}>
+      <div className="container">
       <motion.div 
         className={styles.grid}
         initial={{ opacity: 0, y: 60 }}
@@ -72,6 +73,7 @@ export default function Values(){
           </motion.div>
         ))}
       </motion.div>
+      </div>
     </section>
   )
 }

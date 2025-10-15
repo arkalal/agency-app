@@ -5,8 +5,8 @@ import styles from "./Hero.module.scss";
 
 export default function Hero(){
   return (
-    <section className={`container ${styles.hero}`}>
-      <div className={styles.inner}>
+    <section className={styles.hero}>
+      <div className={`container ${styles.inner}`}>
         <div className={`subtitle ${styles.trustNote}`}>Top 1% Engineers + AI Agents = Lightning Fast Development</div>
         <h1 className={styles.h1}>
           Super <span className={styles.neon}>Charge</span> Your Ideas

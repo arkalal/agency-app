@@ -1,6 +1,5 @@
 .wrap {
-  padding: 80px 0 100px;
-  background: radial-gradient(1200px 600px at 50% 100%, rgba(0,208,255,0.03), transparent);
+  padding: 60px 0 0;
 }
 
 .title {
@@ -51,6 +50,7 @@
   max-width: 700px;
   position: relative;
   overflow: hidden;
+  border-radius: 24px;
 }
 
 .testimonialCard {
@@ -62,6 +62,8 @@
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .content {
@@ -87,7 +89,11 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary-violet), var(--primary-blue));
+  background: linear-gradient(
+    135deg,
+    var(--primary-violet),
+    var(--primary-blue)
+  );
   color: white;
   display: flex;
   align-items: center;
@@ -131,7 +137,11 @@
 }
 
 .indicator.active {
-  background: linear-gradient(135deg, var(--primary-violet), var(--primary-blue));
+  background: linear-gradient(
+    135deg,
+    var(--primary-violet),
+    var(--primary-blue)
+  );
   transform: scale(1.2);
   box-shadow: 0 4px 12px rgba(124, 108, 255, 0.4);
 }
@@ -145,27 +155,27 @@
   .testimonialContainer {
     gap: 16px;
   }
-  
+
   .navButton {
     width: 40px;
     height: 40px;
   }
-  
+
   .testimonialCard {
     padding: 28px;
     min-height: 250px;
   }
-  
+
   .content {
     font-size: 18px;
     margin-bottom: 24px;
   }
-  
+
   .author {
     flex-direction: column;
     gap: 12px;
   }
-  
+
   .authorInfo {
     text-align: center;
   }
@@ -176,7 +186,7 @@
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .navButton {
     display: none;
   }

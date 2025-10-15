@@ -1,3 +1,29 @@
 .home {
   display: block;
 }
+
+/* Clear section separation with solid backgrounds */
+
+/* Section 2: Tech Stack + Services */
+.techServicesSection {
+  background: #f4f8ff;
+  padding: 80px 0;
+  width: 100%;
+  position: relative;
+}
+
+/* Section 3: Process + Testimonials */  
+.processTestimonialsSection {
+  background: #f8fbff;
+  padding: 80px 0;
+  width: 100%;
+  position: relative;
+}
+
+/* Section 5: Final CTA + Footer */
+.finalSection {
+  background: #ffffff;
+  padding: 80px 0 120px;
+  width: 100%;
+  position: relative;
+}

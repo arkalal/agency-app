@@ -1,27 +1,205 @@
-.hero{padding:120px 0 56px;position:relative}
-.inner{max-width:980px;margin:0 auto}
-.trustNote{margin-bottom:14px}
-.h1{font-size:56px;line-height:1.04;letter-spacing:-0.02em;margin-bottom:14px}
-.neon{background:var(--accent-neon);padding:6px 10px;border-radius:10px;box-shadow:0 8px 24px rgba(196,255,96,.5);animation:pulse 2s ease-in-out infinite alternate}
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
+  position: relative;
+  background: radial-gradient(
+    ellipse 1400px 800px at 50% 20%,
+    #e0e7ff 0%,
+    #dbeafe 25%,
+    #bfdbfe 50%,
+    #93c5fd 75%,
+    #60a5fa 100%
+  );
+  overflow: hidden;
+}
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.trustNote {
+  margin-bottom: 14px;
+}
+.h1 {
+  font-size: 50px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+.neon {
+  background: var(--accent-neon);
+  padding: 6px 10px;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(196, 255, 96, 0.5);
+  animation: pulse 2s ease-in-out infinite alternate;
+}
 
 @keyframes pulse {
-  0% { box-shadow: 0 8px 24px rgba(196,255,96,.5); }
-  100% { box-shadow: 0 12px 32px rgba(196,255,96,.7); }
+  0% {
+    box-shadow: 0 8px 24px rgba(196, 255, 96, 0.5);
+  }
+  100% {
+    box-shadow: 0 12px 32px rgba(196, 255, 96, 0.7);
+  }
 }
-.ctas{display:flex;gap:12px;margin:20px 0 28px}
-.cardsRow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch}
-.card{padding:18px;border-radius:20px;display:flex;flex-direction:column;justify-content:space-between;min-height:170px}
-.cardMiniTitle{font-weight:700;opacity:.7;margin-bottom:8px}
-.chart{height:76px;background:linear-gradient(180deg,rgba(255,255,255,.6),transparent);border-radius:12px;position:relative;overflow:hidden;margin:8px 0 12px}
-.line{position:absolute;inset:auto 0 10px 0;height:3px;background:linear-gradient(90deg,#7c6cff,#00d0ff);box-shadow:0 6px 20px rgba(76,110,245,.35)}
-.cardFoot{font-weight:700;color:#0b0b0b}
-.blob{height:84px;border-radius:16px;background:radial-gradient(60% 80% at 30% 30%,#c4ff60,transparent), radial-gradient(70% 80% at 70% 70%,#00d0ff,transparent);filter:blur(10px);animation:float 6s ease-in-out infinite;}
-.stat{font-weight:800;font-size:22px}
-.stat span{display:block;font-weight:600;font-size:12px;color:#5c5f66}
-.avatarWrap{display:flex;justify-content:center}
-.avatar{width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#7c6cff,#00d0ff);box-shadow:0 10px 30px rgba(0,0,0,.08)}
-.caption{margin-top:8px;color:#5c5f66;font-weight:600;text-align:center}
-.balance{font-weight:800;font-size:24px}
-.status{margin-top:10px}
-@media(max-width:1100px){.h1{font-size:44px}.cardsRow{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.cardsRow{grid-template-columns:1fr}.hero{padding-top:88px}.h1{font-size:34px}}
+.ctas {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0 28px;
+}
+.cardsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
+  perspective: 1000px;
+}
+.card {
+  padding: 24px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15),
+    0 4px 16px rgba(31, 38, 135, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateZ(0) rotateX(2deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateZ(10px) rotateX(0deg);
+  box-shadow: 0 16px 48px rgba(31, 38, 135, 0.2),
+    0 8px 24px rgba(31, 38, 135, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.cardMiniTitle {
+  font-weight: 700;
+  opacity: 0.8;
+  margin-bottom: 8px;
+  color: #374151;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.chart {
+  height: 80px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.1)
+  );
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  margin: 12px 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.line {
+  position: absolute;
+  inset: auto 0 12px 0;
+  height: 4px;
+  background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+  border-radius: 2px;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+}
+.cardFoot {
+  font-weight: 700;
+  color: #374151;
+  font-size: 14px;
+}
+.blob {
+  height: 80px;
+  border-radius: 20px;
+  background: radial-gradient(
+      60% 80% at 30% 30%,
+      rgba(196, 255, 96, 0.6),
+      transparent
+    ),
+    radial-gradient(70% 80% at 70% 70%, rgba(6, 182, 212, 0.4), transparent);
+  filter: blur(8px);
+  animation: float 6s ease-in-out infinite;
+  margin: 12px 0 16px;
+}
+.stat {
+  font-weight: 800;
+  font-size: 22px;
+}
+.stat span {
+  display: block;
+  font-weight: 600;
+  font-size: 12px;
+  color: #5c5f66;
+}
+.avatarWrap {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0 16px;
+}
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+.caption {
+  margin-top: 8px;
+  color: #374151;
+  font-weight: 600;
+  text-align: center;
+  font-size: 14px;
+}
+.balance {
+  font-weight: 800;
+  font-size: 28px;
+  color: #1f2937;
+  margin: 12px 0 16px;
+}
+.status {
+  margin-top: auto;
+}
+@media (max-width: 1200px) {
+  .inner {
+    max-width: 1000px;
+  }
+  .h1 {
+    font-size: 46px;
+  }
+}
+@media (max-width: 1000px) {
+  .h1 {
+    font-size: 42px;
+  }
+  .cardsRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .inner {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  .cardsRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+@media (max-width: 640px) {
+  .cardsRow {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .hero {
+    padding-top: 88px;
+  }
+  .h1 {
+    font-size: 34px;
+  }
+}
