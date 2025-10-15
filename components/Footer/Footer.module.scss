@@ -1,0 +1,37 @@
+.footer {
+  margin-top: 80px;
+  padding: 40px 0;
+}
+.inner {
+  display: grid;
+  gap: 18px;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+.links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.link {
+  color: #0b0b0b;
+  opacity: 0.7;
+  font-weight: 600;
+}
+.bottom {
+  font-size: 0.9rem;
+  color: #777;
+}
+.social {
+  display: flex;
+  gap: 12px;
+}
+.icon {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

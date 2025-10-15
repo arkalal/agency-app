@@ -1,0 +1,47 @@
+.wrap {
+  padding: 60px 0;
+}
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+.card {
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 260px;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.thumb {
+  height: 160px;
+  background: radial-gradient(70% 70% at 20% 20%, #c4ff60, transparent),
+    radial-gradient(80% 70% at 80% 70%, #00d0ff, transparent);
+}
+.meta {
+  padding: 14px;
+}
+.wtitle {
+  font-weight: 800;
+}
+.wtext {
+  color: #5c5f66;
+  margin-top: 6px;
+}
+@media (max-width: 780px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,158 @@
+.wrap {
+  padding: 80px 0 60px;
+  overflow: hidden;
+  position: relative;
+}
+
+.title {
+  text-align: center;
+  color: #5c5f66;
+  margin-bottom: 48px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.fadeLeft,
+.fadeRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(248, 251, 255, 1) 0%,
+    rgba(248, 251, 255, 0.8) 50%,
+    rgba(248, 251, 255, 0) 100%
+  );
+}
+
+.fadeRight {
+  right: 0;
+  background: linear-gradient(
+    270deg,
+    rgba(248, 251, 255, 1) 0%,
+    rgba(248, 251, 255, 0.8) 50%,
+    rgba(248, 251, 255, 0) 100%
+  );
+}
+
+.track {
+  display: flex;
+  gap: 24px;
+  width: fit-content;
+  align-items: center;
+}
+
+.techCard {
+  padding: 16px 20px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 160px;
+  white-space: nowrap;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.techCard:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
+.techInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.techName {
+  font-weight: 700;
+  font-size: 15px;
+  color: #0b0b0b;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.techCategory {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .track {
+    gap: 20px;
+  }
+  
+  .techCard {
+    min-width: 140px;
+    padding: 14px 16px;
+  }
+  
+  .iconWrapper {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .fadeLeft,
+  .fadeRight {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .techCard {
+    min-width: 120px;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  
+  .iconWrapper {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .techName {
+    font-size: 14px;
+  }
+  
+  .techCategory {
+    font-size: 10px;
+  }
+}
