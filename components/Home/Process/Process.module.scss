@@ -1,82 +1,1284 @@
 .wrap {
-  padding: 60px 0 40px;
+  padding: 80px 0 60px;
 }
-.title {
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 18px;
+
+.header {
   text-align: center;
+  margin-bottom: 48px;
 }
-.steps {
+
+.title {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.processSimulator {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 20px 60px rgba(31, 38, 135, 0.15);
+  overflow: hidden;
+}
+
+/* Step Navigation */
+.stepNav {
   display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(12, 12, 12, 0.06);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.stepNav::-webkit-scrollbar {
+  display: none;
+}
+
+.stepButton {
+  flex: 1;
+  min-width: 120px;
+  padding: 20px 16px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(12, 12, 12, 0.06);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.stepButton:last-child {
+  border-right: none;
+}
+
+.stepButton.active {
+  background: rgba(124, 108, 255, 0.08);
+}
+
+.stepButton.completed .stepNumber {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: white;
+}
+
+.stepButton:hover:not(.active) {
+  background: rgba(12, 12, 12, 0.03);
+}
+
+.stepButtonInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.stepNumber {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #374151;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  font-weight: 800;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
-.step {
-  padding: 16px 20px;
+
+.stepButton.active .stepNumber {
+  background: linear-gradient(135deg, var(--primary-violet), var(--primary-blue));
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(124, 108, 255, 0.3);
+}
+
+.stepName {
+  font-weight: 700;
+  font-size: 14px;
+  color: #374151;
+}
+
+.stepButton.active .stepName {
+  color: var(--primary-violet);
+}
+
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-violet), var(--primary-blue));
+  transition: width 0.1s linear;
+}
+
+/* Content Area */
+.contentArea {
+  padding: 48px;
+  position: relative;
+  min-height: 500px;
+}
+
+.stepContent {
+  display: grid;
+  gap: 32px;
+}
+
+.contentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.stepBadge {
+  display: inline-block;
+  padding: 8px 14px;
   border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  white-space: nowrap;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  background: #ffffff;
-  border: 1px solid rgba(12, 12, 12, 0.08);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
-.index {
+
+.stepTitle {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+.stepDescription {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.duration {
+  text-align: right;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  border: 1px solid rgba(12, 12, 12, 0.06);
+  min-width: 140px;
+}
+
+.durationLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.durationValue {
+  font-size: 24px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary-violet), var(--primary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.detailsList {
+  display: grid;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(12, 12, 12, 0.06);
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 600;
+  color: #374151;
+  font-size: 15px;
+}
+
+.checkIcon {
   width: 28px;
   height: 28px;
-  border-radius: 999px;
-  background: #0b0b0b;
-  color: #fff;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
+  flex-shrink: 0;
+  font-size: 14px;
 }
-.name {
-  font-weight: 700;
+
+.visualization {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 250px;
+}
+
+/* Discover Visualization - Orbiting Icons */
+.discoverViz {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.iconOrbit {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.orbitIcon {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background: rgba(124, 108, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #7c6cff;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(124, 108, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(124, 108, 255, 0.2);
+}
+
+.centerIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #7c6cff, #4ea8ff);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 12px 32px rgba(124, 108, 255, 0.4);
+  z-index: 2;
+}
+
+/* Design Visualization - Canvas Simulation */
+.designViz {
+  width: 100%;
+  max-width: 320px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.designCanvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 20px;
+  border: 2px solid rgba(78, 168, 255, 0.2);
+  overflow: hidden;
+}
+
+.canvasArea {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  margin-bottom: 16px;
+}
+
+.artboard {
+  position: absolute;
+  width: 140px;
+  height: 160px;
+  border-radius: 12px;
+  border: 2px solid rgba(78, 168, 255, 0.4);
+  box-shadow: 0 8px 24px rgba(78, 168, 255, 0.2);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.gridPattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(78, 168, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(78, 168, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+}
+
+.designElement {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4ea8ff, #7c6cff);
+  box-shadow: 0 4px 16px rgba(78, 168, 255, 0.4);
+}
+
+.colorPalette {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.colorSwatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
+}
+
+.designCursor {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 32px;
+  height: 32px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4ea8ff;
+  box-shadow: 0 4px 16px rgba(78, 168, 255, 0.3);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Build Visualization - Code Editor Simulation */
+.buildViz {
+  width: 100%;
+  max-width: 340px;
+}
+
+.codeEditor {
+  width: 100%;
+}
+
+.editorWindow {
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 208, 255, 0.2);
+}
+
+.editorHeader {
+  background: #2d2d2d;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(0, 208, 255, 0.1);
+}
+
+.editorDots {
+  display: flex;
+  gap: 6px;
+}
+
+.editorDots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.editorDots span:nth-child(1) { background: #ff5f56; }
+.editorDots span:nth-child(2) { background: #ffbd2e; }
+.editorDots span:nth-child(3) { background: #27ca3f; }
+
+.editorTitle {
+  color: #cccccc;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.editorBody {
+  padding: 16px 12px;
+  min-height: 140px;
+  font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+  font-size: 13px;
+}
+
+.codeLine {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+  overflow: hidden;
+}
+
+.lineNumber {
+  color: #858585;
+  min-width: 20px;
+  text-align: right;
+  user-select: none;
+}
+
+.codeText {
+  color: #d4d4d4;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.keyword {
+  color: #c586c0;
+  font-weight: 600;
+}
+
+.function {
+  color: #dcdcaa;
+}
+
+.string {
+  color: #ce9178;
+}
+
+.tag {
+  color: #4ec9b0;
+}
+
+.cursor {
+  color: #ffffff;
+  font-weight: 100;
+  margin-left: 2px;
+}
+
+.buildingIndicators {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.buildIndicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: rgba(0, 208, 255, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 208, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.buildIndicator svg {
+  color: #00d0ff;
+  z-index: 2;
+}
+
+.buildProgress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 208, 255, 0.2), rgba(0, 208, 255, 0.4));
+  z-index: 1;
+}
+
+/* Launch Visualization - Deployment Sequence */
+.launchViz {
+  width: 100%;
+  max-width: 300px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.launchSequence {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.countdown {
+  color: #10b981;
+  filter: drop-shadow(0 8px 24px rgba(16, 185, 129, 0.6));
+  z-index: 3;
+  position: relative;
+}
+
+.deploymentWindows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 240px;
+}
+
+.deployWindow {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
+}
+
+.deployHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.deployStatus {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fbbf24;
+}
+
+.deployProgress {
+  height: 4px;
+  background: linear-gradient(90deg, #10b981, #059669);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.rocketTrail {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.trailParticle {
+  position: absolute;
+  width: 6px;
+  height: 16px;
+  border-radius: 3px;
+  top: 30px;
+}
+
+/* Scale Visualization - Growth Chart */
+.scaleViz {
+  width: 100%;
+  max-width: 260px;
+}
+
+.growthChart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  height: 180px;
+  padding: 20px;
+  background: rgba(255, 107, 157, 0.05);
+  border-radius: 16px;
+  border: 2px solid rgba(255, 107, 157, 0.2);
+}
+
+.chartBar {
+  flex: 1;
+  min-height: 20%;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 8px;
+  box-shadow: 0 4px 16px rgba(255, 107, 157, 0.3);
+  position: relative;
+}
+
+.barIcon {
+  color: white;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.playPauseButton {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-violet), var(--primary-blue));
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 12px 32px rgba(124, 108, 255, 0.4);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.playPauseButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 16px 40px rgba(124, 108, 255, 0.5);
+}
+
+.playPauseButton:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .wrap {
+    padding: 60px 0 40px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .contentArea {
+    padding: 32px 24px;
+    min-height: 450px;
+  }
+
+  .stepTitle {
+    font-size: 24px;
+  }
+
+  .discoverViz {
+    width: 160px;
+    height: 160px;
+  }
+
+  .designViz {
+    max-width: 280px;
+    height: 240px;
+  }
+
+  .canvasArea {
+    height: 150px;
+  }
+
+  .artboard {
+    width: 120px;
+    height: 140px;
+  }
+
+  .buildViz {
+    max-width: 300px;
+  }
+
+  .editorBody {
+    min-height: 120px;
+    font-size: 12px;
+  }
+
+  .launchViz {
+    max-width: 260px;
+    height: 240px;
+  }
+
+  .growthChart {
+    height: 160px;
+    gap: 10px;
+  }
 }
 
 @media (max-width: 768px) {
   .wrap {
-    padding: 40px 0 30px;
+    padding: 50px 0 30px;
   }
+
+  .header {
+    margin-bottom: 32px;
+  }
+
   .title {
     font-size: 28px;
   }
-  .steps {
-    gap: 12px;
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .stepNav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .stepButton {
+    min-width: 100px;
+    padding: 16px 12px;
+  }
+
+  .stepNumber {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .stepName {
+    font-size: 13px;
+  }
+
+  .contentArea {
+    padding: 24px 20px;
+    min-height: 400px;
+  }
+
+  .contentHeader {
+    flex-direction: column;
+  }
+
+  .duration {
+    align-self: flex-start;
+    min-width: 120px;
+  }
+
+  .stepTitle {
+    font-size: 22px;
+  }
+
+  .stepDescription {
+    font-size: 15px;
+  }
+
+  .detailsList {
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .detailItem {
+    font-size: 14px;
+  }
+
+  .visualization {
+    padding: 30px 10px;
+  }
+
+  .discoverViz {
+    width: 140px;
+    height: 140px;
+  }
+
+  .orbitIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .centerIcon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .designViz {
+    max-width: 260px;
+    height: 220px;
+  }
+
+  .canvasArea {
+    height: 130px;
+  }
+
+  .artboard {
+    width: 110px;
+    height: 120px;
+  }
+
+  .designElement {
+    width: 50px;
+    height: 50px;
+  }
+
+  .colorSwatch {
+    width: 28px;
+    height: 28px;
+  }
+
+  .buildViz {
+    max-width: 280px;
+  }
+
+  .editorBody {
+    min-height: 110px;
+    font-size: 11px;
+    padding: 12px 10px;
+  }
+
+  .codeLine {
+    margin-bottom: 5px;
+  }
+
+  .launchViz {
+    max-width: 240px;
+    height: 220px;
+  }
+
+  .countdown svg {
+    font-size: 36px;
+  }
+
+  .deploymentWindows {
+    max-width: 220px;
+  }
+
+  .growthChart {
+    height: 140px;
+    padding: 16px;
+  }
+
+  .playPauseButton {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    bottom: 20px;
+    right: 20px;
   }
 }
 
 @media (max-width: 640px) {
   .title {
-    font-size: 24px;
+    font-size: 26px;
   }
-  .step {
-    padding: 14px 16px;
+
+  .stepButton {
+    min-width: 90px;
+    padding: 14px 10px;
+  }
+
+  .stepNumber {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .stepName {
+    font-size: 12px;
+  }
+
+  .contentArea {
+    padding: 20px 16px;
+    min-height: 380px;
+  }
+
+  .stepBadge {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  .stepTitle {
+    font-size: 20px;
+  }
+
+  .stepDescription {
     font-size: 14px;
   }
-  .index {
+
+  .duration {
+    padding: 12px 16px;
+  }
+
+  .durationValue {
+    font-size: 20px;
+  }
+
+  .detailsList {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .checkIcon {
     width: 24px;
     height: 24px;
+    font-size: 12px;
+  }
+
+  .detailItem {
     font-size: 13px;
+    gap: 10px;
+  }
+
+  .discoverViz {
+    width: 120px;
+    height: 120px;
+  }
+
+  .orbitIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .centerIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .centerIcon svg {
+    font-size: 20px;
+  }
+
+  .designViz {
+    max-width: 240px;
+    height: 200px;
+  }
+
+  .canvasArea {
+    height: 110px;
+    margin-bottom: 12px;
+  }
+
+  .artboard {
+    width: 100px;
+    height: 100px;
+  }
+
+  .designElement {
+    width: 40px;
+    height: 40px;
+  }
+
+  .colorSwatch {
+    width: 24px;
+    height: 24px;
+  }
+
+  .designCursor {
+    width: 28px;
+    height: 28px;
+  }
+
+  .buildViz {
+    max-width: 260px;
+  }
+
+  .editorBody {
+    min-height: 100px;
+    font-size: 10px;
+    padding: 10px 8px;
+  }
+
+  .codeLine {
+    margin-bottom: 4px;
+  }
+
+  .lineNumber {
+    min-width: 16px;
+    font-size: 10px;
+  }
+
+  .buildingIndicators {
+    margin-top: 12px;
+    gap: 8px;
+  }
+
+  .buildIndicator {
+    padding: 6px 10px;
+  }
+
+  .launchViz {
+    max-width: 220px;
+    height: 200px;
+  }
+
+  .countdown svg {
+    font-size: 32px;
+  }
+
+  .deploymentWindows {
+    max-width: 200px;
+    gap: 8px;
+  }
+
+  .deployWindow {
+    padding: 8px 10px;
+  }
+
+  .deployHeader {
+    font-size: 11px;
+  }
+
+  .trailParticle {
+    width: 5px;
+    height: 14px;
+  }
+
+  .growthChart {
+    height: 130px;
+    padding: 14px;
+    gap: 8px;
+  }
+
+  .barIcon {
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
-  .steps {
-    flex-direction: column;
-    gap: 10px;
-    align-items: stretch;
+  .wrap {
+    padding: 40px 0 30px;
   }
-  .step {
-    justify-content: flex-start;
+
+  .header {
+    margin-bottom: 24px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .processSimulator {
+    border-radius: 24px;
+  }
+
+  .stepButton {
+    min-width: 80px;
+    padding: 12px 8px;
+  }
+
+  .stepNumber {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .stepName {
+    font-size: 11px;
+  }
+
+  .contentArea {
+    padding: 20px 14px;
+    min-height: 360px;
+  }
+
+  .stepTitle {
+    font-size: 18px;
+  }
+
+  .durationLabel {
+    font-size: 11px;
+  }
+
+  .durationValue {
+    font-size: 18px;
+  }
+
+  .detailsList {
+    padding: 14px;
+  }
+
+  .visualization {
+    padding: 20px 10px;
+  }
+
+  .visualization {
+    padding: 30px 10px;
+    min-height: 200px;
+  }
+
+  .discoverViz {
+    width: 100px;
+    height: 100px;
+  }
+
+  .orbitIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .centerIcon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .centerIcon svg {
+    font-size: 18px;
+  }
+
+  .designViz {
+    max-width: 220px;
+    height: 180px;
+  }
+
+  .designCanvas {
+    padding: 12px;
+  }
+
+  .canvasArea {
+    height: 90px;
+    margin-bottom: 10px;
+  }
+
+  .artboard {
+    width: 85px;
+    height: 80px;
+  }
+
+  .designElement {
+    width: 35px;
+    height: 35px;
+  }
+
+  .colorPalette {
+    bottom: 12px;
+    gap: 6px;
+  }
+
+  .colorSwatch {
+    width: 20px;
+    height: 20px;
+  }
+
+  .designCursor {
+    width: 24px;
+    height: 24px;
+  }
+
+  .designCursor svg {
+    font-size: 12px;
+  }
+
+  .buildViz {
+    max-width: 240px;
+  }
+
+  .editorHeader {
+    padding: 8px 10px;
+  }
+
+  .editorDots span {
+    width: 8px;
+    height: 8px;
+  }
+
+  .editorTitle {
+    font-size: 11px;
+  }
+
+  .editorBody {
+    min-height: 90px;
+    font-size: 9px;
+    padding: 8px;
+  }
+
+  .codeLine {
+    gap: 8px;
+    margin-bottom: 3px;
+  }
+
+  .lineNumber {
+    min-width: 14px;
+    font-size: 9px;
+  }
+
+  .buildingIndicators {
+    margin-top: 10px;
+    gap: 6px;
+  }
+
+  .buildIndicator {
+    padding: 6px 8px;
+  }
+
+  .buildIndicator svg {
+    font-size: 14px;
+  }
+
+  .launchViz {
+    max-width: 200px;
+    height: 180px;
+  }
+
+  .countdown svg {
+    font-size: 28px;
+  }
+
+  .deploymentWindows {
+    max-width: 180px;
+    gap: 6px;
+  }
+
+  .deployWindow {
+    padding: 8px;
+  }
+
+  .deployHeader {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+
+  .deployStatus {
+    width: 6px;
+    height: 6px;
+  }
+
+  .deployProgress {
+    height: 3px;
+  }
+
+  .trailParticle {
+    width: 4px;
+    height: 12px;
+  }
+
+  .scaleViz {
+    max-width: 200px;
+  }
+
+  .growthChart {
+    height: 110px;
+    padding: 12px;
+    gap: 6px;
+  }
+
+  .barIcon {
+    font-size: 12px;
+  }
+
+  .playPauseButton {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+    bottom: 16px;
+    right: 16px;
   }
 }

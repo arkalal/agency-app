@@ -20,11 +20,11 @@
 }
 
 .scrolled {
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  background: rgba(255,255,255,0.16);
-  border-bottom-color: rgba(255,255,255,0.24);
-  backdrop-filter: saturate(160%) blur(16px);
-  -webkit-backdrop-filter: saturate(160%) blur(16px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.92);
+  border-bottom-color: rgba(12,12,12,0.08);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
 
 .brand {
