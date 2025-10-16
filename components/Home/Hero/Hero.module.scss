@@ -35,6 +35,14 @@
   border-radius: 10px;
   box-shadow: 0 8px 24px rgba(196, 255, 96, 0.5);
   animation: pulse 2s ease-in-out infinite alternate;
+  display: inline-block;
+}
+
+.animatedWordWrapper {
+  display: inline-block;
+  position: relative;
+  min-width: 120px;
+  text-align: center;
 }
 
 @keyframes pulse {
@@ -85,6 +93,15 @@
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+.iconLarge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  margin: 12px 0 16px;
+  font-size: 48px; /* react-icons size */
+  color: #374151;
 }
 .chart {
   height: 80px;

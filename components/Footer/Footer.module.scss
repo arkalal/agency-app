@@ -35,3 +35,31 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 640px) {
+  .footer {
+    margin-top: 60px;
+    padding: 32px 0;
+  }
+  .links {
+    gap: 14px;
+    font-size: 14px;
+  }
+  .bottom {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    margin-top: 50px;
+    padding: 28px 0;
+  }
+  .links {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .link {
+    font-size: 15px;
+  }
+}

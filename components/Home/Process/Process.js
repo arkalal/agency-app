@@ -7,10 +7,10 @@ const Arrow = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="#0b0b0b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
 );
 
-export default function Process(){
+export default function Process({ id }){
   const steps = ['Discover','Design','Build','Launch','Scale'];
   return (
-    <section className={`container ${styles.wrap}`}>
+    <section className={`container ${styles.wrap}`} id={id}>
       <motion.h2 
         className={styles.title}
         initial={{ opacity: 0, y: 30 }}

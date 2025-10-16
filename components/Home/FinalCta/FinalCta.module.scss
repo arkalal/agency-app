@@ -21,3 +21,28 @@
   position: relative;
   z-index: 1;
 }
+
+@media (max-width: 768px) {
+  .inner {
+    padding: 40px 28px;
+    margin-bottom: 40px;
+  }
+  .title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    margin: 0 0 60px;
+  }
+  .inner {
+    padding: 32px 24px;
+    margin-bottom: 30px;
+    border-radius: 24px;
+  }
+  .title {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+}

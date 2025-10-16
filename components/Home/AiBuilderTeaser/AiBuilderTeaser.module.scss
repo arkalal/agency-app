@@ -245,11 +245,88 @@
 @media (max-width: 980px) {
   .contentRow {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
   .preview {
     order: -1;
   }
   .card {
     padding: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 60px 0;
+  }
+  .card {
+    padding: 24px;
+  }
+  .copy h2 {
+    font-size: 1.8rem;
+  }
+  .contentRow {
+    gap: 28px;
+  }
+  .actions {
+    flex-direction: column;
+  }
+  .actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .wrapper {
+    padding: 50px 0;
+  }
+  .card {
+    padding: 20px;
+  }
+  .copy h2 {
+    font-size: 1.5rem;
+  }
+  .headerRow {
+    margin-bottom: 12px;
+  }
+  .previewWindow {
+    max-width: 100%;
+  }
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .blockLarge {
+    grid-column: span 4;
+    height: 100px;
+  }
+  .blockWide {
+    grid-column: span 4;
+    height: 50px;
+  }
+  .block {
+    grid-column: span 2;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 40px 0;
+  }
+  .copy h2 {
+    font-size: 1.4rem;
+  }
+  .promptBox {
+    margin-top: 20px;
+    padding: 16px;
+  }
+  .fakeInput {
+    padding: 12px;
+  }
+  .ribbon {
+    font-size: 0.65rem;
+    padding: 5px 10px;
   }
 }

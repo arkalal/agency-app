@@ -42,3 +42,41 @@
 .name {
   font-weight: 700;
 }
+
+@media (max-width: 768px) {
+  .wrap {
+    padding: 40px 0 30px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .steps {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 24px;
+  }
+  .step {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+  .index {
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .steps {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .step {
+    justify-content: flex-start;
+  }
+}

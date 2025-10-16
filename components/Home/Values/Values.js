@@ -44,9 +44,9 @@ const items = [
   { t: 'Full‑Stack + AI Expertise', s: 'Product, design, data, infra and deployment.', icon: CodeIcon },
 ];
 
-export default function Values(){
+export default function Values({ id }){
   return (
-    <section className={styles.wrap}>
+    <section className={styles.wrap} id={id}>
       <div className="container">
       <motion.div 
         className={styles.grid}

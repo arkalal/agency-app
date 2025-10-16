@@ -39,3 +39,26 @@
   width: 100%;
   position: relative;
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .techServicesSection,
+  .processTestimonialsSection,
+  .aiBuilderSection {
+    padding: 60px 0;
+  }
+  .finalSection {
+    padding: 60px 0 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .techServicesSection,
+  .processTestimonialsSection,
+  .aiBuilderSection {
+    padding: 40px 0;
+  }
+  .finalSection {
+    padding: 40px 0 60px;
+  }
+}

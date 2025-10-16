@@ -26,9 +26,6 @@ export default function Footer(){
           <a className={styles.link} href="#process" onClick={(e) => scrollToSection(e, 'process')}>Process</a>
           <a className={styles.link} href="#testimonials" onClick={(e) => scrollToSection(e, 'testimonials')}>Testimonials</a>
         </div>
-        <div className={styles.social}>
-          <a className={styles.icon} href="#" aria-label="Twitter"><Twitter /></a>
-        </div>
         <div className={styles.bottom}> {new Date().getFullYear()} Arka Labs. All rights reserved.</div>
       </div>
     </footer>

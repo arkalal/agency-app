@@ -113,5 +113,26 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 900px) {
   :root { --container-pad: 1.25rem; }
+  .btn {
+    height: 44px;
+    padding: 0 18px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root { --container-pad: 1rem; }
+  .subtitle {
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root { --container-pad: 0.875rem; }
+  .btn {
+    height: 42px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
 }
 

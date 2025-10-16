@@ -152,42 +152,72 @@
 }
 
 @media (max-width: 768px) {
+  .wrap {
+    padding: 40px 0 0;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 48px;
+  }
   .testimonialContainer {
     gap: 16px;
   }
-
   .navButton {
     width: 40px;
     height: 40px;
   }
-
   .testimonialCard {
     padding: 28px;
     min-height: 250px;
   }
-
   .content {
     font-size: 18px;
     margin-bottom: 24px;
   }
-
   .author {
     flex-direction: column;
     gap: 12px;
   }
-
   .authorInfo {
     text-align: center;
   }
 }
 
 @media (max-width: 480px) {
+  .title {
+    font-size: 28px;
+  }
+  .subtitle {
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
   .testimonialContainer {
     flex-direction: column;
     gap: 20px;
   }
-
   .navButton {
     display: none;
+  }
+  .testimonialCard {
+    padding: 24px 20px;
+    min-height: 240px;
+  }
+  .content {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+  }
+  .name {
+    font-size: 16px;
+  }
+  .role {
+    font-size: 13px;
   }
 }

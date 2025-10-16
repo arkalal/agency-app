@@ -82,7 +82,7 @@ export default function PricingPreview(){
               <li><Check/>Multiple AI/internal tools</li>
               <li><Check/>Priority support</li>
             </ul>
-            <a href="/pricing" className="btn btn-outline">View Details</a>
+            <a href="#book" className="btn btn-outline">View Details</a>
           </motion.div>
         </motion.div>
       </div>
