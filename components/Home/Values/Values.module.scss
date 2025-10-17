@@ -18,6 +18,9 @@
   flex-direction: column;
   justify-content: flex-start;
   transition: transform .18s ease, box-shadow .18s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 .card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-md); }
 .iconWrap {

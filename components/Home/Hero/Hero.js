@@ -6,9 +6,9 @@ import { RiRobot2Line } from "react-icons/ri";
 import { FaUsersCog } from "react-icons/fa";
 import styles from "./Hero.module.scss";
 
-const words = ["SaaS", "MVP", "AI Apps"];
+const words = ["SaaS", "MVPs", "AI Apps"];
 
-export default function Hero(){
+export default function Hero() {
   const [currentWordIndex, setCurrentWordIndex] = React.useState(0);
 
   React.useEffect(() => {
@@ -21,15 +21,17 @@ export default function Hero(){
   const scrollToSection = (e, sectionId) => {
     e.preventDefault();
     const el = document.getElementById(sectionId);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
   return (
     <section className={styles.hero}>
       <div className={`container ${styles.inner}`}>
-        <div className={`subtitle ${styles.trustNote}`}>Top 1% Engineers + AI Agents = Lightning Fast Development</div>
+        <div className={`subtitle ${styles.trustNote}`}>
+          Top 1% Engineers + AI Agents = Lightning Fast Development
+        </div>
         <h1 className={styles.h1}>
           Super <span className={styles.neon}>Charge</span> Your Ideas
-          <br/> into Market‑Ready{" "}
+          <br /> into Market‑Ready{" "}
           <span className={styles.animatedWordWrapper}>
             <AnimatePresence mode="wait">
               <motion.span
@@ -43,23 +45,35 @@ export default function Hero(){
                 {words[currentWordIndex]}
               </motion.span>
             </AnimatePresence>
-          </span>
-          {" "}≤21 days
+          </span>{" "}
+          ≤21 days
         </h1>
-        <p className="subtitle">We combine elite engineering talent with cutting-edge AI agents to ship your SaaS MVP in record time — fully market-ready with AI workflows built-in.</p>
+        <p className="subtitle">
+          We combine elite engineering talent with cutting-edge AI agents to
+          ship your SaaS MVP in record time — fully market-ready <br /> with AI
+          workflows built-in.
+        </p>
 
         <div className={styles.ctas}>
-          <a href="#book" className="btn btn-primary">Book a Call</a>
-          <a href="#pricing" className="btn btn-outline" onClick={(e)=>scrollToSection(e,'pricing')}>View Pricing</a>
+          <a href="#book" className="btn btn-primary">
+            Book a Call
+          </a>
+          <a
+            href="#pricing"
+            className="btn btn-outline"
+            onClick={(e) => scrollToSection(e, "pricing")}
+          >
+            View Pricing
+          </a>
         </div>
 
-        <motion.div 
+        <motion.div
           className={styles.cardsRow}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, staggerChildren: 0.1 }}
         >
-          <motion.div 
+          <motion.div
             className={`glass ${styles.card}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -67,30 +81,38 @@ export default function Hero(){
             whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
             <div className={styles.cardMiniTitle}>Delivery Speed</div>
-            <div className={styles.iconLarge}><FiZap /></div>
+            <div className={styles.iconLarge}>
+              <FiZap />
+            </div>
             <div className={styles.cardFoot}>≤21 days MVP delivery</div>
           </motion.div>
-          <motion.div 
+          <motion.div
             className={`glass ${styles.card}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
             whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
-            <div className={styles.iconLarge}><RiRobot2Line /></div>
-            <div className={styles.stat}>AI + Human<span>hybrid approach</span></div>
+            <div className={styles.iconLarge}>
+              <RiRobot2Line />
+            </div>
+            <div className={styles.stat}>
+              AI + Human<span>hybrid approach</span>
+            </div>
           </motion.div>
-          <motion.div 
+          <motion.div
             className={`glass ${styles.card}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
             whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
-            <div className={styles.iconLarge}><FaUsersCog /></div>
+            <div className={styles.iconLarge}>
+              <FaUsersCog />
+            </div>
             <div className={styles.caption}>Top 1% engineering talent</div>
           </motion.div>
-          <motion.div 
+          <motion.div
             className={`glass ${styles.card}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -99,7 +121,9 @@ export default function Hero(){
           >
             <div className={styles.cardMiniTitle}>Tech Stack</div>
             <div className={styles.balance}>Next.js + AI</div>
-            <div className={styles.status}><span className="badge-neon">Modern</span></div>
+            <div className={styles.status}>
+              <span className="badge-neon">Modern</span>
+            </div>
           </motion.div>
         </motion.div>
       </div>
