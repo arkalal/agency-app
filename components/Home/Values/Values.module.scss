@@ -68,6 +68,10 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
+  .card {
+    animation: none !important;
+    box-shadow: var(--panel-shadow) !important;
+  }
 }
 
 @media (max-width: 640px) {
@@ -80,6 +84,8 @@
   .card {
     padding: 18px;
     min-height: 140px;
+    animation: none !important;
+    box-shadow: var(--panel-shadow) !important;
   }
   .title {
     font-size: 16px;
@@ -95,7 +101,8 @@
   }
   .card {
     min-height: 150px;
-    animation-duration: 1.2s;
+    animation: none !important;
+    box-shadow: var(--panel-shadow) !important;
   }
 }
 

@@ -170,17 +170,17 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.35);
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  color: white;
+  font-size: 24px;
+  color: #ffffff;
   transition: background 0.2s ease, transform 0.2s ease;
   position: relative;
-  z-index: 1;
+  z-index: 100;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   -webkit-user-select: none;
@@ -191,7 +191,10 @@
   width: 22px;
   height: 22px;
   display: block;
-  stroke-width: 2.5;
+  stroke-width: 3;
+  color: #ffffff;
+  fill: none;
+  stroke: currentColor;
 }
 
 .closeBtn:hover {
@@ -269,6 +272,8 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   word-break: break-word;
+  white-space: pre-wrap;
+  overflow: hidden;
 }
 
 /* Markdown styles inside bubbles */
@@ -549,14 +554,16 @@
   }
 
   .closeBtn {
-    width: 38px;
-    height: 38px;
-    background: rgba(255, 255, 255, 0.3);
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.45);
+    font-size: 26px;
   }
 
   .closeBtn svg {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
+    stroke-width: 3.5;
   }
 
   .inputArea {
