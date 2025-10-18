@@ -10,12 +10,24 @@ const words = ["SaaS", "MVPs", "AI Apps"];
 
 export default function Hero() {
   const [currentWordIndex, setCurrentWordIndex] = React.useState(0);
+  const [enableMotion, setEnableMotion] = React.useState(true);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prev) => (prev + 1) % words.length);
     }, 2000);
     return () => clearInterval(interval);
+  }, []);
+
+  React.useEffect(() => {
+    const check = () => {
+      if (typeof window === 'undefined') return;
+      // Disable animations on responsive screens
+      setEnableMotion(window.innerWidth > 1000);
+    };
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
   }, []);
 
   const scrollToSection = (e, sectionId) => {
@@ -69,16 +81,16 @@ export default function Hero() {
 
         <motion.div
           className={styles.cardsRow}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, staggerChildren: 0.1 }}
+          initial={enableMotion ? { opacity: 0, y: 40 } : false}
+          animate={enableMotion ? { opacity: 1, y: 0 } : undefined}
+          transition={enableMotion ? { duration: 0.8, delay: 0.6, staggerChildren: 0.1 } : undefined}
         >
           <motion.div
             className={`glass ${styles.card}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            initial={enableMotion ? { opacity: 0, y: 20 } : false}
+            animate={enableMotion ? { opacity: 1, y: 0 } : undefined}
+            transition={enableMotion ? { duration: 0.6, delay: 0.7 } : undefined}
+            whileHover={enableMotion ? { y: -5, transition: { duration: 0.2 } } : undefined}
           >
             <div className={styles.cardMiniTitle}>Delivery Speed</div>
             <div className={styles.iconLarge}>
@@ -88,10 +100,10 @@ export default function Hero() {
           </motion.div>
           <motion.div
             className={`glass ${styles.card}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            initial={enableMotion ? { opacity: 0, y: 20 } : false}
+            animate={enableMotion ? { opacity: 1, y: 0 } : undefined}
+            transition={enableMotion ? { duration: 0.6, delay: 0.8 } : undefined}
+            whileHover={enableMotion ? { y: -5, transition: { duration: 0.2 } } : undefined}
           >
             <div className={styles.iconLarge}>
               <RiRobot2Line />
@@ -102,10 +114,10 @@ export default function Hero() {
           </motion.div>
           <motion.div
             className={`glass ${styles.card}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            initial={enableMotion ? { opacity: 0, y: 20 } : false}
+            animate={enableMotion ? { opacity: 1, y: 0 } : undefined}
+            transition={enableMotion ? { duration: 0.6, delay: 0.9 } : undefined}
+            whileHover={enableMotion ? { y: -5, transition: { duration: 0.2 } } : undefined}
           >
             <div className={styles.iconLarge}>
               <FaUsersCog />
@@ -114,10 +126,10 @@ export default function Hero() {
           </motion.div>
           <motion.div
             className={`glass ${styles.card}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            initial={enableMotion ? { opacity: 0, y: 20 } : false}
+            animate={enableMotion ? { opacity: 1, y: 0 } : undefined}
+            transition={enableMotion ? { duration: 0.6, delay: 1.0 } : undefined}
+            whileHover={enableMotion ? { y: -5, transition: { duration: 0.2 } } : undefined}
           >
             <div className={styles.cardMiniTitle}>Tech Stack</div>
             <div className={styles.balance}>Next.js + AI</div>

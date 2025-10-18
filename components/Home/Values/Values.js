@@ -45,25 +45,37 @@ const items = [
 ];
 
 export default function Values({ id }){
+  const [enableMotion, setEnableMotion] = React.useState(true);
+
+  React.useEffect(() => {
+    const check = () => {
+      if (typeof window === 'undefined') return;
+      setEnableMotion(window.innerWidth > 1000);
+    };
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   return (
     <section className={styles.wrap} id={id}>
       <div className="container">
       <motion.div 
         className={styles.grid}
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, staggerChildren: 0.1 }}
+        initial={enableMotion ? { opacity: 0, y: 60 } : false}
+        whileInView={enableMotion ? { opacity: 1, y: 0 } : undefined}
+        viewport={enableMotion ? { once: true, margin: "-100px" } : undefined}
+        transition={enableMotion ? { duration: 0.6, staggerChildren: 0.1 } : undefined}
       >
         {items.map((v, i) => (
           <motion.div 
             key={v.t} 
             className={`glass ${styles.card}`}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            initial={enableMotion ? { opacity: 0, y: 40 } : false}
+            whileInView={enableMotion ? { opacity: 1, y: 0 } : undefined}
+            viewport={enableMotion ? { once: true } : undefined}
+            transition={enableMotion ? { duration: 0.5, delay: i * 0.1 } : undefined}
+            whileHover={enableMotion ? { y: -8, transition: { duration: 0.2 } } : undefined}
           >
             <div className={styles.iconWrap}>
               <v.icon />
