@@ -26,7 +26,12 @@ export default function Footer(){
           <a className={styles.link} href="#process" onClick={(e) => scrollToSection(e, 'process')}>Process</a>
           <a className={styles.link} href="#testimonials" onClick={(e) => scrollToSection(e, 'testimonials')}>Testimonials</a>
         </div>
-        <div className={styles.bottom}> {new Date().getFullYear()} Arka Labs. All rights reserved.</div>
+        <div className={styles.legalLinks}>
+          <a className={styles.legalLink} href="/privacy-policy">Privacy Policy</a>
+          <span className={styles.separator}>•</span>
+          <a className={styles.legalLink} href="/terms-of-service">Terms of Service</a>
+        </div>
+        <div className={styles.bottom}>© {new Date().getFullYear()} Arka Labs. All rights reserved.</div>
       </div>
     </footer>
   )

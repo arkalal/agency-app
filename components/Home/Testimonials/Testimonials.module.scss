@@ -64,6 +64,13 @@
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.testimonialCard:active {
+  cursor: grabbing;
 }
 
 .content {

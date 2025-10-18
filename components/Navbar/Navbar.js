@@ -42,7 +42,7 @@ export default function Navbar() {
         </div>
 
         <div className={styles.ctas}>
-          <a href="#book" className="btn btn-primary">Book a Call</a>
+          <a href="https://calendly.com/arkalal-chakravarty/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a Call</a>
         </div>
 
         <button aria-label="Open Menu" className={`btn btn-outline ${styles.hamburger}`} onClick={() => setOpen(v=>!v)}>
@@ -57,7 +57,7 @@ export default function Navbar() {
             <a className={styles.drawerLink} href="#process" onClick={(e) => scrollToSection(e, 'process')}>Process</a>
             <a className={styles.drawerLink} href="#pricing" onClick={(e) => scrollToSection(e, 'pricing')}>Pricing</a>
             <a className={styles.drawerLink} href="#testimonials" onClick={(e) => scrollToSection(e, 'testimonials')}>Testimonials</a>
-            <a className="btn btn-primary" href="#book" onClick={()=>setOpen(false)}>Book a Call</a>
+            <a className="btn btn-primary" href="https://calendly.com/arkalal-chakravarty/30min" target="_blank" rel="noopener noreferrer" onClick={()=>setOpen(false)}>Book a Call</a>
           </div>
         </div>
       )}

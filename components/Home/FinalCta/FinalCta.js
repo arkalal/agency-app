@@ -25,7 +25,9 @@ export default function FinalCta(){
         </motion.h2>
         <motion.a 
           className="btn btn-primary" 
-          href="#book"
+          href="https://calendly.com/arkalal-chakravarty/30min"
+          target="_blank"
+          rel="noopener noreferrer"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

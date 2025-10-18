@@ -62,7 +62,7 @@ export default function PricingPreview(){
               <li><Check/>Landing page + SEO + Analytics</li>
               <li><Check/>Production deployment</li>
             </ul>
-            <a href="#book" className="btn btn-primary">Book a Call</a>
+            <a href="https://calendly.com/arkalal-chakravarty/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a Call</a>
           </motion.div>
           <motion.div 
             className={`glass ${styles.card}`}

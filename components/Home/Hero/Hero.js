@@ -55,7 +55,7 @@ export default function Hero() {
         </p>
 
         <div className={styles.ctas}>
-          <a href="#book" className="btn btn-primary">
+          <a href="https://calendly.com/arkalal-chakravarty/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
             Book a Call
           </a>
           <a
