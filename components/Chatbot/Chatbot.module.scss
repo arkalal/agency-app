@@ -167,16 +167,16 @@
 }
 
 .closeBtn {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 22px;
   color: white;
   transition: background 0.2s ease, transform 0.2s ease;
   position: relative;
@@ -184,6 +184,14 @@
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   -webkit-user-select: none;
+  flex-shrink: 0;
+}
+
+.closeBtn svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  stroke-width: 2.5;
 }
 
 .closeBtn:hover {
@@ -258,6 +266,9 @@
   font-size: 14px;
   line-height: 1.5;
   color: #0b0b0b;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Markdown styles inside bubbles */
@@ -357,11 +368,33 @@
   border-bottom-left-radius: 4px;
 }
 
+.botMessage .messageBubble > * {
+  max-width: 100%;
+}
+
+.botMessage .messageBubble :where(ul, ol) {
+  list-style-position: outside;
+}
+
+.botMessage .messageBubble :where(h2) {
+  margin-top: 12px;
+}
+
+.botMessage .messageBubble :where(h2:first-child) {
+  margin-top: 0;
+}
+
 .userMessage .messageBubble {
   background: linear-gradient(135deg, #7c6cff, #4ea8ff);
-  color: white;
+  color: #ffffff !important;
   box-shadow: 0 4px 16px rgba(124, 108, 255, 0.3);
   border-bottom-right-radius: 4px;
+  font-weight: 600;
+  text-shadow: none;
+}
+
+.userMessage .messageBubble * {
+  color: #ffffff !important;
 }
 
 /* Quick Actions */
@@ -509,6 +542,21 @@
     font-size: 14px;
     padding: 10px 14px;
     max-width: 80%;
+  }
+
+  .userMessage .messageBubble {
+    font-weight: 600;
+  }
+
+  .closeBtn {
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .closeBtn svg {
+    width: 24px;
+    height: 24px;
   }
 
   .inputArea {

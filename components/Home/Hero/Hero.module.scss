@@ -77,33 +77,30 @@
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15),
-    0 4px 16px rgba(31, 38, 135, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: none;
   transform: translateZ(0) rotateX(2deg);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  will-change: transform, opacity;
-  animation: fadeInShadow 0.8s ease-in-out forwards;
+  will-change: transform;
+  animation: fadeInCard 1s ease-out forwards;
   isolation: isolate;
   contain: layout style paint;
 }
 
-@keyframes fadeInShadow {
+@keyframes fadeInCard {
   0% {
-    box-shadow: 0 0 0 rgba(31, 38, 135, 0),
-      0 0 0 rgba(31, 38, 135, 0), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    filter: brightness(1);
+    box-shadow: none;
+    opacity: 0.95;
   }
-  50% {
-    box-shadow: 0 4px 16px rgba(31, 38, 135, 0.08),
-      0 2px 8px rgba(31, 38, 135, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    filter: brightness(1);
+  60% {
+    box-shadow: none;
+    opacity: 1;
   }
   100% {
     box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15),
       0 4px 16px rgba(31, 38, 135, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    filter: brightness(1);
+    opacity: 1;
   }
 }
 .card:hover {
@@ -246,7 +243,7 @@
     font-size: 34px;
   }
   .card {
-    animation-duration: 1s;
+    animation-duration: 1.2s;
   }
 }
 
