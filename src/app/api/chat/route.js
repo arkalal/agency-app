@@ -63,17 +63,16 @@ export async function POST(req) {
       ...(Array.isArray(messages) ? messages : []),
     ];
 
-    // Create a streaming completion with parameters tuned to reduce repetition and enforce consistent formatting
+    // Create a streaming completion with optimized parameters
     const completion = await openai.chat.completions.create({
-      model: "openai/gpt-4.1-mini",
+      model: "openai/gpt-4o",
       stream: true,
       messages: chatMessages,
-      temperature: 0.6,
-      max_tokens: 600,
-      top_p: 0.9,
-      frequency_penalty: 0.6,
-      presence_penalty: 0.1,
-      repetition_penalty: 1.12,
+      temperature: 0.7,
+      max_tokens: 500,
+      // top_p: 0.9,
+      // frequency_penalty: 0.3,
+      // presence_penalty: 0.2,
     });
 
     const stream = new ReadableStream({
