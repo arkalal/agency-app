@@ -45,25 +45,39 @@ const items = [
 ];
 
 export default function Values({ id }){
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    // Detect mobile screen
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <section className={styles.wrap} id={id}>
       <div className="container">
       <motion.div 
         className={styles.grid}
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={isMobile ? false : { opacity: 0, y: 60 }}
+        whileInView={isMobile ? false : { opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, staggerChildren: 0.1 }}
+        transition={isMobile ? undefined : { duration: 0.6, staggerChildren: 0.1 }}
       >
         {items.map((v, i) => (
           <motion.div 
             key={v.t} 
             className={`glass ${styles.card}`}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMobile ? false : { opacity: 0, y: 40 }}
+            whileInView={isMobile ? false : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            transition={isMobile ? undefined : { duration: 0.5, delay: i * 0.1 }}
+            whileHover={isMobile ? undefined : { y: -8, transition: { duration: 0.2 } }}
           >
             <div className={styles.iconWrap}>
               <v.icon />

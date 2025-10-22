@@ -220,11 +220,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 16px;
   }
-  .card {
-    animation: none !important;
-    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15),
-      0 4px 16px rgba(31, 38, 135, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
-  }
 }
 @media (max-width: 768px) {
   .inner {
@@ -235,12 +230,17 @@
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
+}
+@media (max-width: 768px) {
   .card {
     animation: none !important;
     box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15),
       0 4px 16px rgba(31, 38, 135, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    opacity: 1 !important;
+    will-change: auto;
   }
 }
+
 @media (max-width: 640px) {
   .cardsRow {
     grid-template-columns: 1fr;
@@ -251,11 +251,6 @@
   }
   .h1 {
     font-size: 34px;
-  }
-  .card {
-    animation: none !important;
-    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15),
-      0 4px 16px rgba(31, 38, 135, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
   }
 }
 
