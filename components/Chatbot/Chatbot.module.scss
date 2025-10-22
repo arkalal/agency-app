@@ -191,12 +191,29 @@
   width: 22px;
   height: 22px;
   display: block;
-  stroke-width: 2.5;
+  color: white !important;
+  fill: currentColor;
 }
 
 .closeBtn:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: scale(1.05);
+}
+
+/* Mobile fix for close button icon visibility */
+@media (max-width: 480px) {
+  .closeBtn {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .closeBtn svg {
+    width: 24px;
+    height: 24px;
+    color: white !important;
+    fill: currentColor;
+  }
 }
 
 /* Messages Area */
@@ -619,5 +636,51 @@
   .chatWindow {
     height: calc(100vh - 100px);
     max-height: none;
+  }
+}
+
+/* Typing Indicator */
+.typingIndicator {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px !important;
+  min-height: 48px;
+}
+
+.typingDots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.typingDots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c6cff, #4ea8ff);
+  animation: typing-bounce 1.4s ease-in-out infinite;
+  box-shadow: 0 2px 8px rgba(124, 108, 255, 0.3);
+}
+
+.typingDots span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typingDots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typingDots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
   }
 }

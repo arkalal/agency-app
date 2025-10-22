@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect, useMemo } from "react";
+import { useChat } from "@ai-sdk/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,19 +9,47 @@ import { RiRobot2Line } from "react-icons/ri";
 import styles from "./Chatbot.module.scss";
 
 export default function Chatbot() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      type: "bot",
-      text: "👋 Hi! I'm your AI assistant. How can I help you build your SaaS MVP today?",
-      timestamp: new Date(),
-    },
-  ]);
-  const [isLoading, setIsLoading] = useState(false);
-  const abortRef = useRef(null);
-  const [inputValue, setInputValue] = useState("");
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isMounted, setIsMounted] = React.useState(false);
   const chatRef = useRef(null);
   const messagesEndRef = useRef(null);
+
+  // Ensure component is mounted before initializing chat
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Manage input state locally
+  const [input, setInput] = React.useState("");
+
+  // Use Vercel AI SDK useChat hook
+  const {
+    messages = [],
+    sendMessage,
+    status,
+  } = useChat({
+    api: "/api/chat",
+    onError: (error) => {
+      console.error("Chat error:", error);
+    },
+  });
+
+  // Show typing indicator when message is submitted but response hasn't started streaming yet
+  const isLoading = status === 'submitted';
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    
+    sendMessage({ text: input });
+    setInput("");
+  };
+
+  // Handle input change
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
 
   // Close chatbot when clicking outside
   useEffect(() => {
@@ -66,90 +95,6 @@ export default function Chatbot() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSendMessage = async (e) => {
-    e.preventDefault();
-    if (!inputValue.trim()) return;
-
-    // Add user message
-    const userMessage = {
-      type: "user",
-      text: inputValue,
-      timestamp: new Date(),
-    };
-    setMessages((prev) => [...prev, userMessage]);
-    setInputValue("");
-
-    // Start streaming from our API
-    try {
-      setIsLoading(true);
-      const controller = new AbortController();
-      abortRef.current = controller;
-
-      // Build OpenAI-compatible message history
-      const history = [...messages, userMessage]
-        .filter((m) => m.text && typeof m.text === "string")
-        .map((m) => ({
-          role: m.type === "user" ? "user" : "assistant",
-          content: m.text,
-        }));
-
-      // Insert a placeholder assistant message to append streamed chunks
-      const botIndex = messages.length + 1; // after pushing user
-      setMessages((prev) => [
-        ...prev,
-        { type: "bot", text: "", timestamp: new Date(), streaming: true },
-      ]);
-
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: history }),
-        signal: controller.signal,
-      });
-
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err?.error || `Request failed: ${res.status}`);
-      }
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let done = false;
-      while (!done) {
-        const { value, done: doneReading } = await reader.read();
-        done = doneReading;
-        const chunk = decoder.decode(value || new Uint8Array(), { stream: !done });
-        if (chunk) {
-          setMessages((prev) => {
-            const copy = [...prev];
-            const last = copy[copy.length - 1];
-            if (last && last.streaming) {
-              last.text = (last.text || "") + chunk;
-            }
-            return copy;
-          });
-        }
-      }
-
-      // mark stream done
-      setMessages((prev) => {
-        const copy = [...prev];
-        const last = copy[copy.length - 1];
-        if (last && last.streaming) delete last.streaming;
-        return copy;
-      });
-    } catch (err) {
-      setMessages((prev) => [
-        ...prev,
-        { type: "bot", text: "Sorry, I ran into an issue. Please try again.", timestamp: new Date() },
-      ]);
-      console.error("Chat stream error:", err);
-    } finally {
-      setIsLoading(false);
-      abortRef.current = null;
-    }
-  };
-
   const quickActions = [
     "Tell me about MVP pricing",
     "How long does development take?",
@@ -157,8 +102,24 @@ export default function Chatbot() {
   ];
 
   const handleQuickAction = (action) => {
-    setInputValue(action);
+    setInput(action);
   };
+
+  // Add welcome message if no messages exist (memoized to prevent re-renders)
+  const displayMessages = useMemo(() => {
+    return messages.length === 0 
+      ? [{
+          id: "welcome",
+          role: "assistant",
+          content: "👋 Hi! I'm your AI assistant. How can I help you build your SaaS MVP today?",
+        }]
+      : messages;
+  }, [messages]);
+
+  // Don't render until mounted (prevents SSR issues)
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <div className={styles.chatbotContainer} ref={chatRef}>
@@ -179,7 +140,7 @@ export default function Chatbot() {
                   <RiRobot2Line />
                 </div>
                 <div className={styles.headerInfo}>
-                  <div className={styles.botName}>Arka AI Assistant</div>
+                  <div className={styles.botName}>nixpexel AI Assistant</div>
                   <div className={styles.botStatus}>
                     <span className={styles.statusDot}></span>
                     Online
@@ -197,32 +158,60 @@ export default function Chatbot() {
 
             {/* Messages Area */}
             <div className={styles.messagesArea}>
-              {messages.map((msg, idx) => (
+              {displayMessages && displayMessages.length > 0 ? (
+                displayMessages.map((msg) => (
                 <motion.div
-                  key={idx}
+                  key={msg.id}
                   className={`${styles.message} ${
-                    msg.type === "user" ? styles.userMessage : styles.botMessage
+                    msg.role === "user" ? styles.userMessage : styles.botMessage
                   }`}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {msg.type === "bot" && (
+                  {msg.role === "assistant" && (
                     <div className={styles.messageAvatar}>
                       <RiRobot2Line />
                     </div>
                   )}
                   <div className={styles.messageBubble}>
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                      {msg.text || ""}
+                      {msg.parts 
+                        ? msg.parts.map((part) => part.type === 'text' ? part.text : '').join('')
+                        : msg.content || ""}
                     </ReactMarkdown>
                   </div>
                 </motion.div>
-              ))}
+              ))
+              ) : (
+                <div>No messages</div>
+              )}
+              
+              {/* Typing Indicator */}
+              {isLoading && (
+                <motion.div
+                  className={`${styles.message} ${styles.botMessage}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className={styles.messageAvatar}>
+                    <RiRobot2Line />
+                  </div>
+                  <div className={`${styles.messageBubble} ${styles.typingIndicator}`}>
+                    <div className={styles.typingDots}>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+              
               <div ref={messagesEndRef} />
 
               {/* Quick Actions */}
-              {messages.length <= 2 && (
+              {messages.length === 0 && (
                 <div className={styles.quickActions}>
                   {quickActions.map((action, idx) => (
                     <button
@@ -238,13 +227,13 @@ export default function Chatbot() {
             </div>
 
             {/* Input Area */}
-            <form className={styles.inputArea} onSubmit={handleSendMessage}>
+            <form className={styles.inputArea} onSubmit={handleSubmit}>
               <input
                 type="text"
                 className={styles.input}
                 placeholder="Type your message..."
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                value={input}
+                onChange={handleInputChange}
                 autoComplete="off"
                 autoCorrect="off"
                 autoCapitalize="off"
@@ -253,7 +242,7 @@ export default function Chatbot() {
               <button
                 type="submit"
                 className={styles.sendBtn}
-                disabled={!inputValue.trim() || isLoading}
+                disabled={!input.trim() || isLoading}
                 aria-label="Send message"
               >
                 <IoSend />

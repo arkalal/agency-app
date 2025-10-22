@@ -31,7 +31,7 @@ export default function Footer(){
           <span className={styles.separator}>•</span>
           <a className={styles.legalLink} href="/terms-of-service">Terms of Service</a>
         </div>
-        <div className={styles.bottom}>© {new Date().getFullYear()} Arka Labs. All rights reserved.</div>
+        <div className={styles.bottom}>© {new Date().getFullYear()} nixpexel.dev. All rights reserved.</div>
       </div>
     </footer>
   )

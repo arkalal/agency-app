@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Logo from "../Logo/Logo";
 import styles from "./Navbar.module.scss";
 
 const SearchIcon = (props) => (
@@ -32,7 +33,9 @@ export default function Navbar() {
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
       <div className={`container ${styles.inner}`}>
-        <div className={styles.brand}>Arka Labs</div>
+        <div className={styles.brand}>
+          <Logo size="default" />
+        </div>
 
         <div className={styles.menu}>
           <a href="#services" className={styles.link} onClick={(e) => scrollToSection(e, 'services')}>Services</a>

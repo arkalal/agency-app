@@ -1,18 +1,9 @@
-import OpenAI from "openai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { streamText, convertToModelMessages } from "ai";
 
-// Next.js App Router API Route (Edge-compatible Node runtime)
-export const runtime = "nodejs";
+export const runtime = "edge";
 
-const openai = new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY,
-  defaultHeaders: {
-    "HTTP-Referer": process.env.SITE_URL || "",
-    "X-Title": process.env.SITE_NAME || "Arka Labs",
-  },
-});
-
-const SYSTEM_PROMPT = `You are Arka AI Assistant for Arka Labs, a professional software development agency.
+const SYSTEM_PROMPT = `You are nixpexel AI Assistant for nixpexel.dev, a professional software development agency.
 
 ## COMPANY INFO
 - We build AI-powered SaaS MVPs in ≤ 21 days, fully go-to-market ready
@@ -55,55 +46,53 @@ IMPORTANT: Always maintain this professional formatting. Never break markdown sy
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { messages } = body || {};
+    const { messages } = body;
 
-    // Ensure messages array
-    const chatMessages = [
-      { role: "system", content: SYSTEM_PROMPT },
-      ...(Array.isArray(messages) ? messages : []),
-    ];
-
-    // Create a streaming completion with optimized parameters
-    const completion = await openai.chat.completions.create({
-      model: "openai/gpt-4o",
-      stream: true,
-      messages: chatMessages,
-      temperature: 0.7,
-      max_tokens: 500,
-      // top_p: 0.9,
-      // frequency_penalty: 0.3,
-      // presence_penalty: 0.2,
-    });
-
-    const stream = new ReadableStream({
-      async start(controller) {
-        try {
-          for await (const part of completion) {
-            const choice = part?.choices?.[0];
-            const delta = choice?.delta?.content ?? "";
-            if (delta) {
-              controller.enqueue(new TextEncoder().encode(delta));
-            }
-          }
-        } catch (err) {
-          controller.error(err);
-        } finally {
-          controller.close();
+    // Validate messages array
+    if (!messages || !Array.isArray(messages)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid messages format" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
         }
+      );
+    }
+
+    // Initialize OpenRouter provider
+    const openrouter = createOpenRouter({
+      apiKey: process.env.OPENROUTER_API_KEY,
+      headers: {
+        "HTTP-Referer": process.env.SITE_URL || "https://nixpexel.dev",
+        "X-Title": "nixpexel.dev",
       },
     });
 
-    return new Response(stream, {
-      headers: {
-        "Content-Type": "text/plain; charset=utf-8",
-        "Cache-Control": "no-cache, no-transform",
-      },
+    // Convert UIMessages from useChat to ModelMessages for streamText
+    const modelMessages = convertToModelMessages(messages);
+
+    // Use Vercel AI SDK streamText
+    const result = streamText({
+      model: openrouter("openai/gpt-4o-mini"),
+      system: SYSTEM_PROMPT,
+      messages: modelMessages,
+      temperature: 0.7,
+      maxTokens: 500,
+      topP: 0.9,
+      frequencyPenalty: 0.3,
+      presencePenalty: 0.2,
     });
+
+    // Return the streaming response for useChat hook
+    return result.toUIMessageStreamResponse();
   } catch (error) {
-    const msg = error?.message || "Unknown error";
-    return new Response(JSON.stringify({ error: msg }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+    console.error("Chat API error:", error);
+    return new Response(
+      JSON.stringify({ error: error?.message || "An error occurred" }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   }
 }

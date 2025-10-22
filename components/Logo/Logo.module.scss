@@ -1,0 +1,80 @@
+.logo {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.logoText {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: -0.5px;
+  background: linear-gradient(
+    120deg,
+    #5B4CDE 0%,
+    #4EA8FF 40%,
+    #5B4CDE 60%,
+    #4EA8FF 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-swipe 8s ease-in-out infinite;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  text-shadow: 0 0 1px rgba(91, 76, 222, 0.1);
+}
+
+.logoText:hover {
+  transform: scale(1.02);
+  animation: gradient-swipe 3s ease-in-out infinite;
+}
+
+@keyframes gradient-swipe {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Size variants */
+.small .logoText {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.default .logoText {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.large .logoText {
+  font-size: 32px;
+  font-weight: 900;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .default .logoText {
+    font-size: 20px;
+  }
+  
+  .large .logoText {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .default .logoText {
+    font-size: 18px;
+  }
+  
+  .large .logoText {
+    font-size: 22px;
+  }
+}

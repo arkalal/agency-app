@@ -23,9 +23,9 @@ const sora = Sora({
 });
 
 export const metadata = {
-  title: "Arka Labs — Build AI‑Powered SaaS MVPs in 21 Days",
+  title: "nixpexel.dev — Build AI‑Powered SaaS MVPs in 21 Days",
   description:
-    "Arka Labs is a modern software & AI studio. We build market‑ready SaaS MVPs in ≤ 21 days and partner on ongoing product development.",
+    "nixpexel.dev is a modern software & AI studio. We build market‑ready SaaS MVPs in ≤ 21 days and partner on ongoing product development.",
 };
 
 export const viewport = {
