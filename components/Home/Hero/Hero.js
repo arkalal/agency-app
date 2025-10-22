@@ -80,65 +80,98 @@ export default function Hero() {
           </a>
         </div>
 
-        <motion.div
-          className={styles.cardsRow}
-          initial={isMobile ? false : { opacity: 0, y: 40 }}
-          animate={isMobile ? false : { opacity: 1, y: 0 }}
-          transition={isMobile ? undefined : { duration: 0.8, delay: 0.6, staggerChildren: 0.1 }}
-        >
+        {isMobile ? (
+          <div className={styles.cardsRow}>
+            <div className={`glass ${styles.card}`}>
+              <div className={styles.cardMiniTitle}>Delivery Speed</div>
+              <div className={styles.iconLarge}>
+                <FiZap />
+              </div>
+              <div className={styles.cardFoot}>≤21 days MVP delivery</div>
+            </div>
+            <div className={`glass ${styles.card}`}>
+              <div className={styles.iconLarge}>
+                <RiRobot2Line />
+              </div>
+              <div className={styles.stat}>
+                AI + Human<span>hybrid approach</span>
+              </div>
+            </div>
+            <div className={`glass ${styles.card}`}>
+              <div className={styles.iconLarge}>
+                <FaUsersCog />
+              </div>
+              <div className={styles.caption}>Top 1% engineering talent</div>
+            </div>
+            <div className={`glass ${styles.card}`}>
+              <div className={styles.cardMiniTitle}>Tech Stack</div>
+              <div className={styles.balance}>Next.js + AI</div>
+              <div className={styles.status}>
+                <span className="badge-neon">Modern</span>
+              </div>
+            </div>
+          </div>
+        ) : (
           <motion.div
-            className={`glass ${styles.card}`}
-            initial={isMobile ? false : { opacity: 0, y: 20 }}
-            animate={isMobile ? false : { opacity: 1, y: 0 }}
-            transition={isMobile ? undefined : { duration: 0.6, delay: 0.7 }}
-            whileHover={isMobile ? undefined : { y: -5, transition: { duration: 0.2 } }}
+            className={styles.cardsRow}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, staggerChildren: 0.1 }}
           >
-            <div className={styles.cardMiniTitle}>Delivery Speed</div>
-            <div className={styles.iconLarge}>
-              <FiZap />
-            </div>
-            <div className={styles.cardFoot}>≤21 days MVP delivery</div>
+            <motion.div
+              className={`glass ${styles.card}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            >
+              <div className={styles.cardMiniTitle}>Delivery Speed</div>
+              <div className={styles.iconLarge}>
+                <FiZap />
+              </div>
+              <div className={styles.cardFoot}>≤21 days MVP delivery</div>
+            </motion.div>
+            <motion.div
+              className={`glass ${styles.card}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            >
+              <div className={styles.iconLarge}>
+                <RiRobot2Line />
+              </div>
+              <div className={styles.stat}>
+                AI + Human<span>hybrid approach</span>
+              </div>
+            </motion.div>
+            <motion.div
+              className={`glass ${styles.card}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            >
+              <div className={styles.iconLarge}>
+                <FaUsersCog />
+              </div>
+              <div className={styles.caption}>Top 1% engineering talent</div>
+            </motion.div>
+            <motion.div
+              className={`glass ${styles.card}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            >
+              <div className={styles.cardMiniTitle}>Tech Stack</div>
+              <div className={styles.balance}>Next.js + AI</div>
+              <div className={styles.status}>
+                <span className="badge-neon">Modern</span>
+              </div>
+            </motion.div>
           </motion.div>
-          <motion.div
-            className={`glass ${styles.card}`}
-            initial={isMobile ? false : { opacity: 0, y: 20 }}
-            animate={isMobile ? false : { opacity: 1, y: 0 }}
-            transition={isMobile ? undefined : { duration: 0.6, delay: 0.8 }}
-            whileHover={isMobile ? undefined : { y: -5, transition: { duration: 0.2 } }}
-          >
-            <div className={styles.iconLarge}>
-              <RiRobot2Line />
-            </div>
-            <div className={styles.stat}>
-              AI + Human<span>hybrid approach</span>
-            </div>
-          </motion.div>
-          <motion.div
-            className={`glass ${styles.card}`}
-            initial={isMobile ? false : { opacity: 0, y: 20 }}
-            animate={isMobile ? false : { opacity: 1, y: 0 }}
-            transition={isMobile ? undefined : { duration: 0.6, delay: 0.9 }}
-            whileHover={isMobile ? undefined : { y: -5, transition: { duration: 0.2 } }}
-          >
-            <div className={styles.iconLarge}>
-              <FaUsersCog />
-            </div>
-            <div className={styles.caption}>Top 1% engineering talent</div>
-          </motion.div>
-          <motion.div
-            className={`glass ${styles.card}`}
-            initial={isMobile ? false : { opacity: 0, y: 20 }}
-            animate={isMobile ? false : { opacity: 1, y: 0 }}
-            transition={isMobile ? undefined : { duration: 0.6, delay: 1.0 }}
-            whileHover={isMobile ? undefined : { y: -5, transition: { duration: 0.2 } }}
-          >
-            <div className={styles.cardMiniTitle}>Tech Stack</div>
-            <div className={styles.balance}>Next.js + AI</div>
-            <div className={styles.status}>
-              <span className="badge-neon">Modern</span>
-            </div>
-          </motion.div>
-        </motion.div>
+        )}
       </div>
     </section>
   );

@@ -62,31 +62,48 @@ export default function Values({ id }){
   return (
     <section className={styles.wrap} id={id}>
       <div className="container">
-      <motion.div 
-        className={styles.grid}
-        initial={isMobile ? false : { opacity: 0, y: 60 }}
-        whileInView={isMobile ? false : { opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={isMobile ? undefined : { duration: 0.6, staggerChildren: 0.1 }}
-      >
-        {items.map((v, i) => (
-          <motion.div 
-            key={v.t} 
-            className={`glass ${styles.card}`}
-            initial={isMobile ? false : { opacity: 0, y: 40 }}
-            whileInView={isMobile ? false : { opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={isMobile ? undefined : { duration: 0.5, delay: i * 0.1 }}
-            whileHover={isMobile ? undefined : { y: -8, transition: { duration: 0.2 } }}
-          >
-            <div className={styles.iconWrap}>
-              <v.icon />
+      {isMobile ? (
+        <div className={styles.grid}>
+          {items.map((v) => (
+            <div 
+              key={v.t} 
+              className={`glass ${styles.card}`}
+            >
+              <div className={styles.iconWrap}>
+                <v.icon />
+              </div>
+              <div className={styles.title}>{v.t}</div>
+              <div className={styles.text}>{v.s}</div>
             </div>
-            <div className={styles.title}>{v.t}</div>
-            <div className={styles.text}>{v.s}</div>
-          </motion.div>
-        ))}
-      </motion.div>
+          ))}
+        </div>
+      ) : (
+        <motion.div 
+          className={styles.grid}
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, staggerChildren: 0.1 }}
+        >
+          {items.map((v, i) => (
+            <motion.div 
+              key={v.t} 
+              className={`glass ${styles.card}`}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            >
+              <div className={styles.iconWrap}>
+                <v.icon />
+              </div>
+              <div className={styles.title}>{v.t}</div>
+              <div className={styles.text}>{v.s}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
       </div>
     </section>
   )
