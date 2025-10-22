@@ -10,22 +10,12 @@ const words = ["SaaS", "MVPs", "AI Apps"];
 
 export default function Hero() {
   const [currentWordIndex, setCurrentWordIndex] = React.useState(0);
-  const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prev) => (prev + 1) % words.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
-
-  React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 1000);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   const scrollToSection = (e, sectionId) => {
@@ -79,20 +69,16 @@ export default function Hero() {
 
         <motion.div
           className={styles.cardsRow}
-          {...(!isMobile && {
-            initial: { opacity: 0, y: 40 },
-            animate: { opacity: 1, y: 0 },
-            transition: { duration: 0.8, delay: 0.6, staggerChildren: 0.1 }
-          })}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, staggerChildren: 0.1 }}
         >
           <motion.div
             className={`glass ${styles.card}`}
-            {...(!isMobile && {
-              initial: { opacity: 0, y: 20 },
-              animate: { opacity: 1, y: 0 },
-              transition: { duration: 0.6, delay: 0.7 },
-              whileHover: { y: -5, transition: { duration: 0.2 } }
-            })}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
             <div className={styles.cardMiniTitle}>Delivery Speed</div>
             <div className={styles.iconLarge}>
@@ -102,12 +88,10 @@ export default function Hero() {
           </motion.div>
           <motion.div
             className={`glass ${styles.card}`}
-            {...(!isMobile && {
-              initial: { opacity: 0, y: 20 },
-              animate: { opacity: 1, y: 0 },
-              transition: { duration: 0.6, delay: 0.8 },
-              whileHover: { y: -5, transition: { duration: 0.2 } }
-            })}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
             <div className={styles.iconLarge}>
               <RiRobot2Line />
@@ -118,12 +102,10 @@ export default function Hero() {
           </motion.div>
           <motion.div
             className={`glass ${styles.card}`}
-            {...(!isMobile && {
-              initial: { opacity: 0, y: 20 },
-              animate: { opacity: 1, y: 0 },
-              transition: { duration: 0.6, delay: 0.9 },
-              whileHover: { y: -5, transition: { duration: 0.2 } }
-            })}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
             <div className={styles.iconLarge}>
               <FaUsersCog />
@@ -132,12 +114,10 @@ export default function Hero() {
           </motion.div>
           <motion.div
             className={`glass ${styles.card}`}
-            {...(!isMobile && {
-              initial: { opacity: 0, y: 20 },
-              animate: { opacity: 1, y: 0 },
-              transition: { duration: 0.6, delay: 1.0 },
-              whileHover: { y: -5, transition: { duration: 0.2 } }
-            })}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.0 }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
             <div className={styles.cardMiniTitle}>Tech Stack</div>
             <div className={styles.balance}>Next.js + AI</div>

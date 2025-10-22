@@ -191,7 +191,7 @@ export default function Chatbot() {
                 onClick={() => setIsOpen(false)}
                 aria-label="Close chat"
               >
-                <IoClose size={22} style={{ display: 'block', minWidth: '22px', minHeight: '22px' }} />
+                <IoClose />
               </button>
             </div>
 
@@ -280,7 +280,7 @@ export default function Chatbot() {
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <IoClose size={24} style={{ display: 'block', minWidth: '24px', minHeight: '24px' }} />
+              <IoClose />
             </motion.div>
           ) : (
             <motion.div
@@ -290,7 +290,7 @@ export default function Chatbot() {
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <IoChatbubbleEllipsesOutline size={24} style={{ display: 'block' }} />
+              <IoChatbubbleEllipsesOutline />
             </motion.div>
           )}
         </AnimatePresence>
