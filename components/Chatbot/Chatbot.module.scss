@@ -177,7 +177,7 @@
   align-items: center;
   justify-content: center;
   font-size: 22px;
-  color: white;
+  color: white !important;
   transition: background 0.2s ease, transform 0.2s ease;
   position: relative;
   z-index: 1;
@@ -190,9 +190,12 @@
 .closeBtn svg {
   width: 22px;
   height: 22px;
-  display: block;
+  display: block !important;
   color: white !important;
-  fill: currentColor;
+  fill: white !important;
+  stroke: white !important;
+  opacity: 1 !important;
+  pointer-events: none;
 }
 
 .closeBtn:hover {
@@ -205,14 +208,18 @@
   .closeBtn {
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.35) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
   
   .closeBtn svg {
-    width: 24px;
-    height: 24px;
+    width: 26px !important;
+    height: 26px !important;
     color: white !important;
-    fill: currentColor;
+    fill: white !important;
+    stroke: white !important;
+    display: block !important;
+    opacity: 1 !important;
   }
 }
 
@@ -525,11 +532,12 @@
 
   .chatWindow {
     width: calc(100vw - 32px);
-    height: calc(100vh - 120px);
-    max-height: 600px;
+    height: calc(100vh - 140px);
+    max-height: 650px;
     position: fixed;
     bottom: 90px;
     right: 16px;
+    top: auto;
   }
 
   .chatHeader {
@@ -566,14 +574,20 @@
   }
 
   .closeBtn {
-    width: 38px;
-    height: 38px;
-    background: rgba(255, 255, 255, 0.3);
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.35) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .closeBtn svg {
-    width: 24px;
-    height: 24px;
+    width: 26px !important;
+    height: 26px !important;
+    color: white !important;
+    fill: white !important;
+    stroke: white !important;
+    display: block !important;
+    opacity: 1 !important;
   }
 
   .inputArea {
@@ -634,8 +648,26 @@
 /* Very small screens */
 @media (max-height: 600px) and (max-width: 480px) {
   .chatWindow {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 120px);
     max-height: none;
+    top: 20px;
+    bottom: auto;
+  }
+}
+
+/* Additional safety for mobile devices to prevent top cutoff */
+@media (max-width: 480px) {
+  .chatWindow {
+    max-height: min(650px, calc(100vh - 140px));
+  }
+}
+
+/* Safe area insets for notched devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+  @media (max-width: 480px) {
+    .chatWindow {
+      max-height: min(650px, calc(100vh - 140px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+    }
   }
 }
 

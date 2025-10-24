@@ -8,7 +8,7 @@ const testimonials = [
     id: 1,
     name: "Sarah Chen",
     role: "Founder, HealthTech Startup",
-    content: "Arka Labs delivered our AI-powered healthcare platform in just 18 days. The quality and speed were incredible – they combined their engineering expertise with AI tools flawlessly.",
+    content: "nixpexel delivered our AI-powered healthcare platform in just 18 days. The quality and speed were incredible – they combined their engineering expertise with AI tools flawlessly.",
     avatar: "SC"
   },
   {

@@ -1,12 +1,15 @@
 "use client";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiZap } from "react-icons/fi";
-import { RiRobot2Line } from "react-icons/ri";
-import { FaUsersCog } from "react-icons/fa";
 import styles from "./Hero.module.scss";
+import {
+  DeliverySpeedAnimation,
+  AIHumanAnimation,
+  EngineeringTalentAnimation,
+  TechStackAnimation,
+} from "./CardAnimations";
 
-const words = ["SaaS", "MVPs", "AI Apps"];
+const words = ["SaaS", "AI Agents", "MVPs", "AI Apps"];
 
 export default function Hero() {
   const [currentWordIndex, setCurrentWordIndex] = React.useState(0);
@@ -17,11 +20,11 @@ export default function Hero() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   React.useEffect(() => {
@@ -68,7 +71,12 @@ export default function Hero() {
         </p>
 
         <div className={styles.ctas}>
-          <a href="https://calendly.com/arkalal-chakravarty/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+          <a
+            href="https://calendly.com/arkalal-chakravarty/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary"
+          >
             Book a Call
           </a>
           <a
@@ -84,28 +92,22 @@ export default function Hero() {
           <div className={styles.cardsRow}>
             <div className={`glass ${styles.card}`}>
               <div className={styles.cardMiniTitle}>Delivery Speed</div>
-              <div className={styles.iconLarge}>
-                <FiZap />
-              </div>
+              <DeliverySpeedAnimation />
               <div className={styles.cardFoot}>≤21 days MVP delivery</div>
             </div>
             <div className={`glass ${styles.card}`}>
-              <div className={styles.iconLarge}>
-                <RiRobot2Line />
-              </div>
+              <AIHumanAnimation />
               <div className={styles.stat}>
                 AI + Human<span>hybrid approach</span>
               </div>
             </div>
             <div className={`glass ${styles.card}`}>
-              <div className={styles.iconLarge}>
-                <FaUsersCog />
-              </div>
+              <EngineeringTalentAnimation />
               <div className={styles.caption}>Top 1% engineering talent</div>
             </div>
             <div className={`glass ${styles.card}`}>
               <div className={styles.cardMiniTitle}>Tech Stack</div>
-              <div className={styles.balance}>Next.js + AI</div>
+              <TechStackAnimation />
               <div className={styles.status}>
                 <span className="badge-neon">Modern</span>
               </div>
@@ -114,58 +116,107 @@ export default function Hero() {
         ) : (
           <motion.div
             className={styles.cardsRow}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, staggerChildren: 0.1 }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  delayChildren: 0.6,
+                  staggerChildren: 0.12,
+                },
+              },
+            }}
           >
             <motion.div
               className={`glass ${styles.card}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              variants={{
+                hidden: { opacity: 0, y: 30, scale: 0.95 },
+                visible: { opacity: 1, y: 0, scale: 1 },
+              }}
+              transition={{
+                duration: 0.6,
+                ease: [0.4, 0, 0.2, 1],
+              }}
+              whileHover={{
+                y: -8,
+                scale: 1.02,
+                transition: { duration: 0.3, ease: "easeOut" },
+              }}
+              whileTap={{ scale: 0.98 }}
             >
               <div className={styles.cardMiniTitle}>Delivery Speed</div>
-              <div className={styles.iconLarge}>
-                <FiZap />
-              </div>
-              <div className={styles.cardFoot}>≤21 days MVP delivery</div>
+              <DeliverySpeedAnimation />
+              <motion.div
+                className={styles.cardFoot}
+                initial={{ opacity: 0.9 }}
+                whileHover={{ opacity: 1, x: 2 }}
+              >
+                ≤21 days MVP delivery
+              </motion.div>
             </motion.div>
             <motion.div
               className={`glass ${styles.card}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              variants={{
+                hidden: { opacity: 0, y: 30, scale: 0.95 },
+                visible: { opacity: 1, y: 0, scale: 1 },
+              }}
+              transition={{
+                duration: 0.6,
+                ease: [0.4, 0, 0.2, 1],
+              }}
+              whileHover={{
+                y: -8,
+                scale: 1.02,
+                transition: { duration: 0.3, ease: "easeOut" },
+              }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className={styles.iconLarge}>
-                <RiRobot2Line />
-              </div>
+              <AIHumanAnimation />
               <div className={styles.stat}>
                 AI + Human<span>hybrid approach</span>
               </div>
             </motion.div>
             <motion.div
               className={`glass ${styles.card}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              variants={{
+                hidden: { opacity: 0, y: 30, scale: 0.95 },
+                visible: { opacity: 1, y: 0, scale: 1 },
+              }}
+              transition={{
+                duration: 0.6,
+                ease: [0.4, 0, 0.2, 1],
+              }}
+              whileHover={{
+                y: -8,
+                scale: 1.02,
+                transition: { duration: 0.3, ease: "easeOut" },
+              }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className={styles.iconLarge}>
-                <FaUsersCog />
-              </div>
+              <EngineeringTalentAnimation />
               <div className={styles.caption}>Top 1% engineering talent</div>
             </motion.div>
             <motion.div
               className={`glass ${styles.card}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              variants={{
+                hidden: { opacity: 0, y: 30, scale: 0.95 },
+                visible: { opacity: 1, y: 0, scale: 1 },
+              }}
+              transition={{
+                duration: 0.6,
+                ease: [0.4, 0, 0.2, 1],
+              }}
+              whileHover={{
+                y: -8,
+                scale: 1.02,
+                transition: { duration: 0.3, ease: "easeOut" },
+              }}
+              whileTap={{ scale: 0.98 }}
             >
               <div className={styles.cardMiniTitle}>Tech Stack</div>
-              <div className={styles.balance}>Next.js + AI</div>
+              <TechStackAnimation />
               <div className={styles.status}>
                 <span className="badge-neon">Modern</span>
               </div>

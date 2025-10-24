@@ -152,7 +152,7 @@ export default function Chatbot() {
                 onClick={() => setIsOpen(false)}
                 aria-label="Close chat"
               >
-                <IoClose />
+                <IoClose size={26} style={{ color: 'white', display: 'block' }} />
               </button>
             </div>
 
