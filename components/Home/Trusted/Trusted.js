@@ -21,18 +21,21 @@ import styles from "./Trusted.module.scss";
 
 export default function TechStack(){
   const technologies = [
+    // Main Tech Stack - Shown first for maximum visibility
     { name: 'Next.js', category: 'Framework', icon: SiNextdotjs, color: '#000000' },
-    { name: 'React', category: 'Library', icon: SiReact, color: '#61DAFB' },
-    { name: 'MongoDB', category: 'Database', icon: SiMongodb, color: '#47A248' },
     { name: 'Node.js', category: 'Backend', icon: SiNodedotjs, color: '#339933' },
     { name: 'Vercel', category: 'Deploy', icon: SiVercel, color: '#000000' },
+    { name: 'MongoDB', category: 'Database', icon: SiMongodb, color: '#47A248' },
     { name: 'OpenAI', category: 'AI', icon: SiOpenai, color: '#412991' },
+    { name: 'React', category: 'Library', icon: SiReact, color: '#61DAFB' },
+    
+    // Supporting AI Tools - Shown after main stack
     { name: 'Anthropic', category: 'AI', icon: FaBrain, color: '#D97706' },
-    { name: 'Cursor AI', category: 'Tool', icon: FaCode, color: '#7C3AED' },
-    { name: 'Lovable', category: 'Tool', icon: FaLightbulb, color: '#EC4899' },
-    { name: 'ChatGPT', category: 'AI', icon: FaRobot, color: '#10B981' },
     { name: 'Claude', category: 'AI', icon: FaBrain, color: '#F59E0B' },
-    { name: 'OpenRouter', category: 'AI', icon: FaCog, color: '#6366F1' }
+    { name: 'ChatGPT', category: 'AI', icon: FaRobot, color: '#10B981' },
+    { name: 'OpenRouter', category: 'AI', icon: FaCog, color: '#6366F1' },
+    { name: 'Cursor AI', category: 'Tool', icon: FaCode, color: '#7C3AED' },
+    { name: 'Lovable', category: 'Tool', icon: FaLightbulb, color: '#EC4899' }
   ];
   
   return (
@@ -61,7 +64,7 @@ export default function TechStack(){
         
         <motion.div 
           className={styles.track}
-          animate={{ x: [-1000, 0] }}
+          animate={{ x: [0, -1000] }}
           transition={{
             duration: 25,
             repeat: Infinity,

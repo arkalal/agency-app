@@ -151,8 +151,22 @@ export default function Chatbot() {
                 className={styles.closeBtn}
                 onClick={() => setIsOpen(false)}
                 aria-label="Close chat"
+                type="button"
               >
-                <IoClose size={26} style={{ color: 'white', display: 'block' }} />
+                <IoClose 
+                  size={26} 
+                  style={{ 
+                    color: 'white', 
+                    display: 'block',
+                    fill: 'white',
+                    stroke: 'white',
+                    visibility: 'visible',
+                    opacity: 1,
+                    width: '26px',
+                    height: '26px'
+                  }} 
+                  aria-hidden="true"
+                />
               </button>
             </div>
 

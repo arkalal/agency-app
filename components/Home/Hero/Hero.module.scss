@@ -322,14 +322,16 @@
   margin: 12px 0 16px;
 }
 .stat {
-  font-weight: 800;
-  font-size: 24px;
-  line-height: 1.3;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
   background: linear-gradient(135deg, #1f2937, #374151);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   transition: all 0.3s ease;
+  text-align: center;
+  margin-top: 8px;
 }
 
 .card:hover .stat {
@@ -342,11 +344,11 @@
 .stat span {
   display: block;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   color: #5c5f66;
-  margin-top: 4px;
+  margin-top: 6px;
   letter-spacing: 0.3px;
-  opacity: 0.9;
+  opacity: 0.85;
   transition: color 0.3s ease;
 }
 
@@ -456,7 +458,11 @@
   }
   
   .stat {
-    font-size: 20px;
+    font-size: 16px;
+  }
+  
+  .stat span {
+    font-size: 11px;
   }
   
   .balance {

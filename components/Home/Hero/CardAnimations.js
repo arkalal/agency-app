@@ -308,7 +308,7 @@ export const TechStackAnimation = () => {
           <motion.div
             key={i}
             className={styles.block}
-            style={{ bottom: `${i * 22 + 20}%` }}
+            style={{ bottom: `${i * 26 + 10}%` }}
             initial={{ y: -50, opacity: 0, scale: 0.8 }}
             animate={{ 
               y: 0,
@@ -322,15 +322,15 @@ export const TechStackAnimation = () => {
               repeatDelay: 2
             }}
           >
-            <svg width="45" height="18" viewBox="0 0 45 18" fill="none">
+            <svg width="70" height="24" viewBox="0 0 70 24" fill="none">
               <rect 
-                width="45" 
-                height="18" 
-                rx="4" 
+                width="70" 
+                height="24" 
+                rx="6" 
                 fill={`url(#block-grad-${i})`}
-                opacity="0.9"
+                opacity="0.95"
               />
-              <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="8" fontWeight="700">
+              <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="11" fontWeight="700">
                 {['Next.js', 'AI API', 'React'][i]}
               </text>
               <defs>
