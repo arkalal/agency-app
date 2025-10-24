@@ -288,7 +288,7 @@ export const EngineeringTalentAnimation = () => {
   );
 };
 
-// Tech Stack Animation - Building blocks stacking up
+// Tech Stack Animation - React + AI powered stack
 export const TechStackAnimation = () => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -302,88 +302,211 @@ export const TechStackAnimation = () => {
 
   return (
     <div className={styles.animationContainer}>
-      <div className={styles.stackScene}>
-        {/* Blocks stacking */}
-        {[0, 1, 2].map((i) => (
-          <motion.div
-            key={i}
-            className={styles.block}
-            style={{ bottom: `${i * 26 + 10}%` }}
-            initial={{ y: -50, opacity: 0, scale: 0.8 }}
-            animate={{ 
-              y: 0,
-              opacity: 1,
-              scale: 1,
-            }}
-            transition={{
-              duration: 0.8,
-              delay: i * 0.4,
-              repeat: Infinity,
-              repeatDelay: 2
-            }}
-          >
-            <svg width="70" height="24" viewBox="0 0 70 24" fill="none">
-              <rect 
-                width="70" 
-                height="24" 
-                rx="6" 
-                fill={`url(#block-grad-${i})`}
-                opacity="0.95"
-              />
-              <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="white" fontSize="11" fontWeight="700">
-                {['Next.js', 'AI API', 'React'][i]}
-              </text>
-              <defs>
-                <linearGradient id={`block-grad-${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor={i === 0 ? "#7c6cff" : i === 1 ? "#4ea8ff" : "#5b8def"} />
-                  <stop offset="100%" stopColor={i === 0 ? "#5b8def" : i === 1 ? "#7c6cff" : "#4ea8ff"} />
-                </linearGradient>
-              </defs>
-            </svg>
-          </motion.div>
-        ))}
-        
-        {/* Sparkles */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className={styles.sparkle}
-            style={{ 
-              left: `${15 + Math.random() * 70}%`,
-              top: `${10 + Math.random() * 60}%`
-            }}
-            animate={{ 
-              scale: [0, 1, 0],
-              opacity: [0, 1, 0],
-              rotate: [0, 180],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              delay: i * 0.3,
-              ease: "easeInOut"
-            }}
-          >
-            ✨
-          </motion.div>
-        ))}
-        
-        {/* Arrow pointing up */}
+      <div className={styles.techStackScene}>
+        {/* React Icon */}
         <motion.div
-          className={styles.arrow}
+          className={styles.reactIcon}
           animate={{ 
-            y: [5, -5, 5],
+            rotate: [0, 360],
+            scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 1.5,
+            rotate: {
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear"
+            },
+            scale: {
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }
+          }}
+        >
+          <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+            <motion.circle
+              cx="25"
+              cy="25"
+              r="4"
+              fill="#61DAFB"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+            <motion.ellipse
+              cx="25"
+              cy="25"
+              rx="18"
+              ry="7"
+              stroke="#61DAFB"
+              strokeWidth="2"
+              fill="none"
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            />
+            <motion.ellipse
+              cx="25"
+              cy="25"
+              rx="18"
+              ry="7"
+              stroke="#61DAFB"
+              strokeWidth="2"
+              fill="none"
+              style={{ transform: 'rotate(60deg)', transformOrigin: '25px 25px' }}
+              animate={{ rotate: [60, 420] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            />
+            <motion.ellipse
+              cx="25"
+              cy="25"
+              rx="18"
+              ry="7"
+              stroke="#61DAFB"
+              strokeWidth="2"
+              fill="none"
+              style={{ transform: 'rotate(120deg)', transformOrigin: '25px 25px' }}
+              animate={{ rotate: [120, 480] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            />
+          </svg>
+        </motion.div>
+
+        {/* Plus symbol */}
+        <motion.div
+          className={styles.techPlus}
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.7, 1, 0.7],
+          }}
+          transition={{
+            duration: 2,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 15L10 5M10 5L5 10M10 5L15 10" stroke="#c4ff60" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          +
+        </motion.div>
+
+        {/* AI Coding Agent Icon */}
+        <motion.div
+          className={styles.aiIcon}
+          animate={{ 
+            y: [0, -5, 0],
+          }}
+          transition={{
+            duration: 2.5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+            {/* Robot head */}
+            <rect x="15" y="15" width="20" height="22" rx="3" fill="url(#ai-gradient)" />
+            
+            {/* Antenna */}
+            <motion.line
+              x1="25" y1="12" x2="25" y2="15"
+              stroke="#7c6cff"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <motion.circle
+              cx="25" cy="11" r="2"
+              fill="#c4ff60"
+              animate={{ 
+                scale: [1, 1.3, 1],
+                opacity: [0.8, 1, 0.8],
+              }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+            
+            {/* Eyes */}
+            <motion.circle
+              cx="20" cy="22" r="2"
+              fill="#c4ff60"
+              animate={{ 
+                scaleY: [1, 0.3, 1],
+              }}
+              transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+            />
+            <motion.circle
+              cx="30" cy="22" r="2"
+              fill="#c4ff60"
+              animate={{ 
+                scaleY: [1, 0.3, 1],
+              }}
+              transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+            />
+            
+            {/* Code brackets in face */}
+            <text x="17" y="32" fill="white" fontSize="8" fontWeight="700" fontFamily="monospace">&lt;/&gt;</text>
+            
+            {/* Floating code symbols */}
+            <motion.text
+              x="8" y="22" fill="#7c6cff" fontSize="10" fontWeight="700" fontFamily="monospace"
+              animate={{ 
+                x: [8, 6, 8],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              {'{}'}
+            </motion.text>
+            
+            <motion.text
+              x="38" y="25" fill="#4ea8ff" fontSize="10" fontWeight="700" fontFamily="monospace"
+              animate={{ 
+                x: [38, 40, 38],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+            >
+              []
+            </motion.text>
+            
+            <motion.text
+              x="22" y="42" fill="#c4ff60" fontSize="8" fontWeight="700" fontFamily="monospace"
+              animate={{ 
+                y: [42, 40, 42],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+            >
+              AI
+            </motion.text>
+            
+            <defs>
+              <linearGradient id="ai-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#7c6cff" />
+                <stop offset="100%" stopColor="#4ea8ff" />
+              </linearGradient>
+            </defs>
           </svg>
         </motion.div>
+
+        {/* Data flow particles */}
+        {[...Array(4)].map((_, i) => (
+          <motion.div
+            key={i}
+            className={styles.dataParticle}
+            style={{ 
+              left: `${30 + i * 10}%`,
+              top: `${45 + (i % 2) * 10}%`
+            }}
+            animate={{ 
+              x: [0, 10, 0],
+              opacity: [0, 1, 0],
+              scale: [0, 1, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: i * 0.5,
+              ease: "easeInOut"
+            }}
+          >
+            •
+          </motion.div>
+        ))}
       </div>
     </div>
   );

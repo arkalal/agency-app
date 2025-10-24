@@ -153,20 +153,10 @@ export default function Chatbot() {
                 aria-label="Close chat"
                 type="button"
               >
-                <IoClose 
-                  size={26} 
-                  style={{ 
-                    color: 'white', 
-                    display: 'block',
-                    fill: 'white',
-                    stroke: 'white',
-                    visibility: 'visible',
-                    opacity: 1,
-                    width: '26px',
-                    height: '26px'
-                  }} 
-                  aria-hidden="true"
-                />
+                <span className={styles.closeIcon}>
+                  <IoClose size={24} />
+                  <span className={styles.closeFallback}>×</span>
+                </span>
               </button>
             </div>
 
