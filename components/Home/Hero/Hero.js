@@ -2,12 +2,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Hero.module.scss";
-import {
-  DeliverySpeedAnimation,
-  AIHumanAnimation,
-  EngineeringTalentAnimation,
-  TechStackAnimation,
-} from "./CardAnimations";
+import HeroCards from "./HeroCards";
 
 const words = ["SaaS", "AI Agents", "MVPs", "AI Apps"];
 
@@ -88,141 +83,7 @@ export default function Hero() {
           </a>
         </div>
 
-        {isMobile ? (
-          <div className={styles.cardsRow}>
-            <div className={`glass ${styles.card}`}>
-              <div className={styles.cardMiniTitle}>Delivery Speed</div>
-              <DeliverySpeedAnimation />
-              <div className={styles.cardFoot}>≤21 days MVP delivery</div>
-            </div>
-            <div className={`glass ${styles.card}`}>
-              <AIHumanAnimation />
-              <div className={styles.stat}>
-                AI + Human<span>hybrid approach</span>
-              </div>
-            </div>
-            <div className={`glass ${styles.card}`}>
-              <EngineeringTalentAnimation />
-              <div className={styles.caption}>Top 1% engineering talent</div>
-            </div>
-            <div className={`glass ${styles.card}`}>
-              <div className={styles.cardMiniTitle}>Tech Stack</div>
-              <TechStackAnimation />
-              <div className={styles.status}>
-                <span className="badge-neon">Modern</span>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <motion.div
-            className={styles.cardsRow}
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  delayChildren: 0.6,
-                  staggerChildren: 0.12,
-                },
-              },
-            }}
-          >
-            <motion.div
-              className={`glass ${styles.card}`}
-              variants={{
-                hidden: { opacity: 0, y: 30, scale: 0.95 },
-                visible: { opacity: 1, y: 0, scale: 1 },
-              }}
-              transition={{
-                duration: 0.6,
-                ease: [0.4, 0, 0.2, 1],
-              }}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-                transition: { duration: 0.3, ease: "easeOut" },
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className={styles.cardMiniTitle}>Delivery Speed</div>
-              <DeliverySpeedAnimation />
-              <motion.div
-                className={styles.cardFoot}
-                initial={{ opacity: 0.9 }}
-                whileHover={{ opacity: 1, x: 2 }}
-              >
-                ≤21 days MVP delivery
-              </motion.div>
-            </motion.div>
-            <motion.div
-              className={`glass ${styles.card}`}
-              variants={{
-                hidden: { opacity: 0, y: 30, scale: 0.95 },
-                visible: { opacity: 1, y: 0, scale: 1 },
-              }}
-              transition={{
-                duration: 0.6,
-                ease: [0.4, 0, 0.2, 1],
-              }}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-                transition: { duration: 0.3, ease: "easeOut" },
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <AIHumanAnimation />
-              <div className={styles.stat}>
-                AI + Human<span>hybrid approach</span>
-              </div>
-            </motion.div>
-            <motion.div
-              className={`glass ${styles.card}`}
-              variants={{
-                hidden: { opacity: 0, y: 30, scale: 0.95 },
-                visible: { opacity: 1, y: 0, scale: 1 },
-              }}
-              transition={{
-                duration: 0.6,
-                ease: [0.4, 0, 0.2, 1],
-              }}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-                transition: { duration: 0.3, ease: "easeOut" },
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <EngineeringTalentAnimation />
-              <div className={styles.caption}>Top 1% engineering talent</div>
-            </motion.div>
-            <motion.div
-              className={`glass ${styles.card}`}
-              variants={{
-                hidden: { opacity: 0, y: 30, scale: 0.95 },
-                visible: { opacity: 1, y: 0, scale: 1 },
-              }}
-              transition={{
-                duration: 0.6,
-                ease: [0.4, 0, 0.2, 1],
-              }}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-                transition: { duration: 0.3, ease: "easeOut" },
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className={styles.cardMiniTitle}>Tech Stack</div>
-              <TechStackAnimation />
-              <div className={styles.status}>
-                <span className="badge-neon">Modern</span>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
+        <HeroCards />
       </div>
     </section>
   );
