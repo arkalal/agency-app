@@ -2,7 +2,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Hero.module.scss";
-import HeroCards from "./HeroCards";
+import CardStackAnimation from "./CardStackAnimation";
 
 const words = ["SaaS", "AI Agents", "MVPs", "AI Apps"];
 
@@ -83,7 +83,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <HeroCards />
+        <CardStackAnimation />
       </div>
     </section>
   );
