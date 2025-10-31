@@ -187,8 +187,8 @@ export default function TermsOfService() {
             <h2>18. Contact Information</h2>
             <p>If you have questions about these Terms, please contact us:</p>
             <p>
-              <strong>Email:</strong> arkalal.chakravarty@gmail.com<br />
-              <strong>Website:</strong> Arka Labs<br />
+              <strong>Email:</strong> admin@arkalalchakravarty.com<br />
+              <strong>Website:</strong> nixpexel.dev<br />
               <strong>Scheduling:</strong> <a href="https://calendly.com/arkalal-chakravarty/30min" target="_blank" rel="noopener noreferrer">Book a consultation</a>
             </p>
           </section>

@@ -197,9 +197,9 @@ export default function PrivacyPolicy() {
               please contact us:
             </p>
             <p>
-              <strong>Email:</strong> arkalal.chakravarty@gmail.com
+              <strong>Email:</strong> admin@arkalalchakravarty.com
               <br />
-              <strong>Website:</strong> Arka Labs
+              <strong>Website:</strong> nixpexel.dev
             </p>
           </section>
         </div>

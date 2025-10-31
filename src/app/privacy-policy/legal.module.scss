@@ -1,11 +1,9 @@
 .legalPage {
   min-height: 100vh;
   padding: 140px 0 80px;
-  background: linear-gradient(
-    180deg,
-    rgba(239, 246, 255, 0.6),
-    rgba(255, 255, 255, 0.4)
-  );
+  background: #eff6ff;
+  position: relative;
+  isolation: isolate;
 }
 
 .legalContent {
